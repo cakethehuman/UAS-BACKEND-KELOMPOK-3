@@ -13,10 +13,12 @@
 Anggota kelompok <br>
 535250001 - Leonardo Firnandius <br>
 535250009 - Malvin Grico Gunawan <br>
-5352500013 - Wilson Hadinata Putra <br>
+5352500013 - Willson Hadinata Putra <br>
 5352500019 - Chandra <br>
 5352500043 - Nicholas Tannaydi <br>
 5352500044 - Felix Lin <br>
 
+# Basic Guide how to make tailwind appear
 
-
+First run npm run dev
+then php artisan serve
