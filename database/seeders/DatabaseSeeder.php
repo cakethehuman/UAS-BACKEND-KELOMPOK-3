@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Dallas Mavericks',
             'city' => 'Dallas',
             'abbreviation' => 'DAL',
-            'logo' => 'teams/mavericks.png',
+            'logo' => 'images/teams/mavericks.png',
             'conference' => 'Western',
             'division' => 'Southwest',
             'wins' => 10,
