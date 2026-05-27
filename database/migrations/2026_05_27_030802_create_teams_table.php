@@ -11,20 +11,24 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            
-            // Basic info
+
+            // Basicly ini untuk nama table    
             $table->string('name');          
             $table->string('city');          
             $table->string('abbreviation');  
-            // NBA structure
+
+            $table->string('logo')->nullable();
+
             $table->string('conference');    
             $table->string('division');      
-            // Team performance
+    
             $table->integer('wins')->default(0);
             $table->integer('losses')->default(0);
             $table->string('arena');
+
+            
 
             $table->timestamps();
         });
@@ -35,6 +39,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('teams');
     }
 };

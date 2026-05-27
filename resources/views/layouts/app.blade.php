@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="h-full bg-black">
+<html class="h-full bg-slate-900">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,9 +16,13 @@
                 <div class="ml-10 flex items-baseline space-x-4">
                 <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
                 <a href="{{ url('/') }}" aria-current="page" class="px-3 py-2 text-sm 
-                font-medium text-gray-300 hover:bg-red-500/20 
-                hover:text-red-400 border-2 border-red-500/40 
+                font-medium text-gray-300 hover:bg-mavs-navy/70 
+                hover:text-white border-2 border-mavs-navy
                 rounded-full transition duration-300">Home</a>
+                <a href="{{ url('/teams') }}" aria-current="page" class="px-3 py-2 text-sm 
+                font-medium text-gray-300 hover:bg-mavs-navy/70 
+                hover:text-white border-2 border-mavs-navy
+                rounded-full transition duration-300">Teams</a>
                 </div>
             </div>
             </div>
