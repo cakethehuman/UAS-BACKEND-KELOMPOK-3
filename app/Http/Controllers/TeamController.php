@@ -40,7 +40,7 @@ class TeamController extends Controller
             'division' => 'required|string|max:50',
             'wins' => 'required|integer|min:0',
             'losses' => 'required|integer|min:0',
-            'arena' => 'required|string|max:100',
+            'arena' => 'required|string|max:50',
         ]);
 
         Team::create($request->all());
