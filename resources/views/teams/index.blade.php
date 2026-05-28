@@ -10,16 +10,16 @@
     </section>
     <section id="teams" class="flex justify-center">
         <div class="flex justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-5xl my-5">
-            <div class="grid grid-cols-5 gap-25 px-8 py-8">
+            <div class="grid grid-cols-3 gap-25 px-6 py-6">
                 @if($teams -> isEmpty())
                     <p class="text-white">No teams</p>
                 @else
                     @foreach ($teams as $team)
                         <!-- border border-3 border-mavs-navy  -->
-                        <div class="border border-3 border-mavs-navy rounded-xl w-50">
-                            <div class="flex flex-col px-5 py-5">
+                        <div class="border border-3 border-mavs-navy rounded-2xl w-full">
+                            <div class="flex flex-col px-5 py-5 items-center justify-center">
                                 <img 
-                                class = "w-36 h-36 items-center"
+                                class = "w-36 h-36 object-contain items-center"
                                 src={{ asset($team -> logo) }} 
                                 alt="teamLogo">
                                 <h1 class = "text-white text-md">{{ $team -> name }}</h1>
