@@ -18,51 +18,46 @@
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
                                 @auth
-                                                        <a href="{{ url('/') }}" aria-current="page" class="px-3 py-2 text-sm 
-                                    font-medium text-gray-300 hover:bg-mavs-navy/70 
-                                    hover:text-white border-2 border-mavs-navy
-                                    rounded-full transition duration-300">Home</a>
-                                                        <a href="{{ url('/teams') }}" aria-current="page" class="px-3 py-2 text-sm 
-                                    font-medium text-gray-300 hover:bg-mavs-navy/70 
-                                    hover:text-white border-2 border-mavs-navy
-                                    rounded-full transition duration-300">Teams</a>
-                                                        <a href="{{ url('/news') }}" aria-current="page" class="px-3 py-2 text-sm 
-                                    font-medium text-gray-300 hover:bg-mavs-navy/70 
-                                    hover:text-white border-2 border-mavs-navy
-                                    rounded-full transition duration-300">News</a>
+                                    <a href="{{ url('/') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
+                                        hover:text-white border-2 border-mavs-navy
+                                        rounded-full transition duration-300">Home</a>
+                                    <a href="{{ url('/teams') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
+                                        hover:text-white border-2 border-mavs-navy
+                                        rounded-full transition duration-300">Teams</a>
+                                    <a href="{{ url('/news') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
+                                        hover:text-white border-2 border-mavs-navy
+                                        rounded-full transition duration-300">News</a>
                                 @endauth
                                 <!-- Konten yang diwrap oleh directive guest hanya ditampilkan oleh user yang belum login atau belum terautentikasi -->
                                 @guest
-                                                    <a href="{{ route('show.login') }}" aria-current="page" class="px-3 py-2 text-sm 
-                                    font-medium text-gray-300 hover:bg-mavs-navy/70 
-                                    hover:text-white border-2 border-mavs-navy
-                                    rounded-full transition duration-300">Login</a>
-                                                    <a href="{{ route('show.register') }}" aria-current="page" class="px-3 py-2 text-sm 
-                                    font-medium text-gray-300 hover:bg-mavs-navy/70 
-                                    hover:text-white border-2 border-mavs-navy
-                                    rounded-full transition duration-300">Teams</a>
-                                                    <a href="{{ url('/news') }}" aria-current="page" class="px-3 py-2 text-sm 
-                                    font-medium text-gray-300 hover:bg-mavs-navy/70 
-                                    hover:text-white border-2 border-mavs-navy
-                                    rounded-full transition duration-300">News</a>
-                                                    <a href="{{ url('/store') }}" aria-current="page" class="px-3 py-2 text-sm 
-                                    font-medium text-gray-300 hover:bg-mavs-navy/70 
-                                    hover:text-white border-2 border-mavs-navy
-                                    rounded-full transition duration-300">Store</a>
-                                                    rounded-full transition duration-300">Register</a>
+                                    <a href="{{ route('show.login') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
+                                        hover:text-white border-2 border-mavs-navy
+                                        rounded-full transition duration-300">Login</a>
+                                    <a href="{{ route('show.register') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
+                                        hover:text-white border-2 border-mavs-navy
+                                        rounded-full transition duration-300">Register</a>
                                 @endguest
                                 <!-- auth directive digunakan untuk memastikan bahwa konten yang terbungkus dengan directive itu baru akan muncul jika user telah login -->
                                 @auth
-                                                        <span class="border-r-2 pr-2 text-cyan-500">
-                                                            Hi there, {{ Auth::user()->name }}
-                                                        </span>
-                                                        <form action="{{ route('logout') }}" method="POST" class="m-0">
-                                                            @csrf
-                                                            <button class="px-3 py-2 text-sm 
+                                            <a href="{{ url('/store') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                                font-medium text-gray-300 hover:bg-mavs-navy/70 
+                                                hover:text-white border-2 border-mavs-navy
+                                                rounded-full transition duration-300">Store</a>
+                                            <span class="border-r-2 pr-2 text-cyan-500">
+                                                Hi there, {{ Auth::user()->name }}
+                                            </span>
+                                            <form action="{{ route('logout') }}" method="POST" class="m-0">
+                                                @csrf
+                                                <button class="px-3 py-2 text-sm 
                                     font-medium text-gray-300 hover:bg-red-600/70 
                                     hover:text-white border-2 border-mavs-navy
                                     rounded-full transition duration-300">Logout</button>
-                                                        </form>
+                                            </form>
                                 @endauth
                             </div>
                         </div>
