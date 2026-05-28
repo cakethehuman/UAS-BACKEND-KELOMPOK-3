@@ -8,10 +8,10 @@
         <div class="flex justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-5xl my-5">
             <div class="grid grid-cols-5 gap-25 px-8 py-8">
                 @if($games -> isEmpty())
-                    <p class="text-white">Games are being blade</p>
+                    <p class="text-white">No games</p>
                 @else
                     <div class="border border-navy w-2xl">
-                        <h1>hellow</h1>
+                        <h1>hello</h1>
                     </div>
                 @endif
             </div>
