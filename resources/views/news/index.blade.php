@@ -10,7 +10,10 @@
     @endif
 
     <div class="mb-6">
-        <a class="text-white bg-blue-700 px-4 py-2 rounded-full text-sm font-semibold" href="{{ route('news.create') }}">Create New Article</a>
+	@can('create', App\Models\Team::class) <!-- terhubung dengan policy yang ada -->
+		<a class="text-white bg-blue-700 px-4 py-2 rounded-full text-sm font-semibold" href="{{ route('news.create') }}">Create New Article</a>
+	@endcan
+
     </div>
 
     @if($articles->isEmpty())
