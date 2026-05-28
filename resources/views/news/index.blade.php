@@ -31,7 +31,7 @@
                     
                     <div class="flex items-center gap-3">
 			<a class="text-[#DC143C] font-semibold text-sm hover:underline" href="{{ route('news.show', $article->slug) }}">View</a>
-			@can('create', App\Models\Article::class) <!-- terhubung dengan policy yang ada -->
+			@can('update', $article) <!-- terhubung dengan policy yang ada -->
 				<span class="text-gray-600">|</span>
 				<a class="text-yellow-500 font-semibold text-sm hover:underline" href="{{ route('news.edit', $article->slug) }}">Edit</a>
 			@endcan

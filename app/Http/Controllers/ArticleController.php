@@ -49,19 +49,19 @@ class ArticleController extends Controller
 
     public function edit($slug)
     {
-	Gate::authorize('update', Article::class);
-        // Irritating Bug fix: find article by slug directly
+	// Irritating Bug fix: find article by slug directly
         $article = Article::where('slug', $slug)->firstOrFail();
+	Gate::authorize('update', $article);
 
         return view('news.edit', compact('article'));
     }
 
     public function update(Request $request, $slug)
     {
-	Gate::authorize('update', Article::class);
+	
         // Irritating Bug fix: find article by slug directly
         $article = Article::where('slug', $slug)->firstOrFail();
-
+	Gate::authorize('update', $article);
         $validated = $request->validate([
             'title' => 'required|string|max:125',
             'content' => 'required|string',
@@ -77,9 +77,9 @@ class ArticleController extends Controller
 
     public function destroy($slug)
     {
-	Gate::authorize('delete', Article::class);
-        // Bug fix: find article with slug then delete
+	// Bug fix: find article with slug then delete	
         $article = Article::where('slug', $slug)->firstOrFail();
+	Gate::authorize('delete', $article);
         $article->delete();
 
         return redirect()->route('news.index')->with('success', 'The article is removed.');
