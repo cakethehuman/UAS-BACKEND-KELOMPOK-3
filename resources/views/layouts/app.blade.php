@@ -27,6 +27,10 @@
                 font-medium text-gray-300 hover:bg-mavs-navy/70 
                 hover:text-white border-2 border-mavs-navy
                 rounded-full transition duration-300">News</a>
+                <a href="{{ url('/store') }}" aria-current="page" class="px-3 py-2 text-sm 
+                font-medium text-gray-300 hover:bg-mavs-navy/70 
+                hover:text-white border-2 border-mavs-navy
+                rounded-full transition duration-300">Store</a>
                 </div>
             </div>
             </div>
