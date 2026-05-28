@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('games', function (Blueprint $table) {
-            $table->id('game_id');
+            $table->id();
             
-            $table->foreignId('home_team_id')->constrained('teams', 'team_id');
-            $table->foreignId('away_team_id')->constrained('teams', 'team_id');
+            $table->foreignId('home_team_id')->constrained('teams', 'id');
+            $table->foreignId('away_team_id')->constrained('teams', 'id');
             $table->dateTime("scheduled_date");
             $table->string('game_status', 50)->default('Scheduled');
 

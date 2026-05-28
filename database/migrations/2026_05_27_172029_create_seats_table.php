@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('seats', function (Blueprint $table) {
-            $table->id('seat_id');
-            $table->foreignId('game_id')->constrained('games', 'game_id')->onDelete('cascade');
+            $table->id();
+            $table->foreignId('game_id')->constrained('games', 'id')->onDelete('cascade');
             
             $table->decimal('seat_price', 10, 2);
             $table->string('seat_number', 50);

@@ -6,7 +6,7 @@
     </div>
     <section id="teams" class="flex justify-center">
         <div class="flex justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-5xl my-5">
-            <div class="grid grid-cols-5 gap-15 px-8 py-8">
+            <div class="grid grid-cols-5 gap-25 px-8 py-8">
                 @if($teams -> isEmpty())
                     <p class="text-white">No teams</p>
                 @else
@@ -14,6 +14,10 @@
                         <!-- border border-3 border-mavs-navy  -->
                         <div class="border border-3 border-mavs-navy rounded-xl w-50">
                             <div class="flex flex-col px-5 py-5">
+                                <img 
+                                class = "w-36 h-36 items-center"
+                                src={{ asset($team -> logo) }} 
+                                alt="teamLogo">
                                 <h1 class = "text-white text-md">{{ $team -> name }}</h1>
                 
                                 <div class="flex items-center gap-2">

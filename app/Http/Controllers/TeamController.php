@@ -35,14 +35,14 @@ class TeamController extends Controller
             'name' => 'required|string|max:50',
             'city' => 'required|string|max:50',
             'abbreviation' => 'required|string|max:10',
-            'logo' => 'required|string|max:100',
+            'logo' => 'required|string|max:255',
             'conference' => 'required|string|max:50',
             'division' => 'required|string|max:50',
             'wins' => 'required|integer|min:0',
             'losses' => 'required|integer|min:0',
-            'arena' => 'required|string|max:50',
+            'arena' => 'required|string|max:100',
         ]);
-
+        
         Team::create($request->all());
 
         return redirect()->route('teams.index')->with('success','The team is inserted successfully.');
