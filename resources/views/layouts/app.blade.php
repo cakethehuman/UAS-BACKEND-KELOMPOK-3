@@ -1,46 +1,41 @@
-<!doctype html>
-<html class="h-full bg-slate-900">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-  </head>
-  <body class="h-full">
-    <div class="min-h-full">
-    <nav class="bg-gray-800/50">
-        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="flex h-16 items-center justify-between">
-            <div class="flex items-center justify-center relative w-full">
-
-            <div class="hidden md:block">
-                <div class="ml-10 flex items-baseline space-x-4">
-                <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-                <a href="{{ url('/') }}" aria-current="page" class="px-3 py-2 text-sm 
-                font-medium text-gray-300 hover:bg-mavs-navy/70 
-                hover:text-white border-2 border-mavs-navy
-                rounded-full transition duration-300">Home</a>
-                <a href="{{ url('/teams') }}" aria-current="page" class="px-3 py-2 text-sm 
-                font-medium text-gray-300 hover:bg-mavs-navy/70 
-                hover:text-white border-2 border-mavs-navy
-                rounded-full transition duration-300">Teams</a>
-                <a href="{{ url('/news') }}" aria-current="page" class="px-3 py-2 text-sm 
-                font-medium text-gray-300 hover:bg-mavs-navy/70 
-                hover:text-white border-2 border-mavs-navy
-                rounded-full transition duration-300">News</a>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'NBA Project')</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">NBA Project</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/standings">Standings</a>
+                    </li>
+                </ul>
             </div>
         </div>
-        </div>
-
     </nav>
 
-    <main>
-        <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+    <main class="py-4">
+        <div class="container">
             @yield('content')
         </div>
     </main>
-    </div>
 
-  </body>
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2026 NBA Project. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

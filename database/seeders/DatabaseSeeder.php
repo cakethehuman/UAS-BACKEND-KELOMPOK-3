@@ -18,10 +18,12 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        // User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+         User::factory()->create([
+             'name' => 'Admin User',
+             'email' => 'admin@example.com',
+	     'is_admin' => true,
+	     'password' => '12345678910',
+         ]);
 
         Team::insert([
         [
@@ -39,7 +41,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Los Angeles Lakers',
             'city' => 'Los Angeles',
             'abbreviation' => 'LAL',
-            'logo' => 'teams/lakers.png',
+            'logo' => 'images/teams/lakers.png',
             'conference' => 'Western',
             'division' => 'Pacific',
             'wins' => 47,

@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex flex-col items-center border border-mavs-navy border-3 
-    rounded-full w-full text-white">
-    <h1>Made by</h1>
-    <h1>hi</h1>
+    <div class="text-center py-5">
+        <h1 class="mb-4">Welcome to NBA Project</h1>
+        <p class="lead mb-4">Kelompok 3 UAS</p>
+        <a href="/standings" class="btn btn-primary btn-lg">View Standings</a>
     </div>
 @endsection
