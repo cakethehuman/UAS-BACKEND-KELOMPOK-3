@@ -6,6 +6,7 @@ use App\Http\Controllers\TeamController;
 
 use App\Http\Controllers\ArticleController;
 
+use App\Http\Controllers\StoreController;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
@@ -31,6 +32,8 @@ Route::middleware('auth')->group(function (){
 	Route::resource('teams', TeamController::class)->middleware('auth');
 	// Untuk news page
 	Route::resource('news', ArticleController::class)->parameters(['news' => 'slug']);
+    //Untuk store page
+    Route::resource('store', StoreController::class);
 });
 
 
@@ -38,3 +41,6 @@ Route::middleware('auth')->group(function (){
 
 
 
+
+//Untuk store page
+Route::resource('store', StoreController::class);
