@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Article;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Gate;
 class ArticleController extends Controller
 {
     public function index()
@@ -18,11 +18,13 @@ class ArticleController extends Controller
 
     public function create()
     {
+	Gate::authorize('create', Article::class);
         return view('news.create');
     }
 
     public function store(Request $request)
     {
+	Gate::authorize('create', Article::class); //Lanjutan dari create
         $validated = $request->validate([
             'title' => 'required|string|max:125',
             'content' => 'required|string',
@@ -47,6 +49,7 @@ class ArticleController extends Controller
 
     public function edit($slug)
     {
+	Gate::authorize('update', Article::class);
         // Irritating Bug fix: find article by slug directly
         $article = Article::where('slug', $slug)->firstOrFail();
 
@@ -55,6 +58,7 @@ class ArticleController extends Controller
 
     public function update(Request $request, $slug)
     {
+	Gate::authorize('update', Article::class);
         // Irritating Bug fix: find article by slug directly
         $article = Article::where('slug', $slug)->firstOrFail();
 
@@ -73,6 +77,7 @@ class ArticleController extends Controller
 
     public function destroy($slug)
     {
+	Gate::authorize('delete', Article::class);
         // Bug fix: find article with slug then delete
         $article = Article::where('slug', $slug)->firstOrFail();
         $article->delete();
