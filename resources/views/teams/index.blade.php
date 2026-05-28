@@ -46,9 +46,11 @@
             </div>
         </div>
     </section>
+    @can('create', App\Models\Team::class)
     <section id="Edit" class="flex justify-center">
         <div class="flex w-5xl items-center justify-center">
             <a class="text-white border border-2 border-green-600 rounded-full h-7 px-5 bg-green-600" href="{{ route('teams.create') }}"> + Buat Post Baru</a>
         </div>
+     @endcan
     </section>
 @endsection
