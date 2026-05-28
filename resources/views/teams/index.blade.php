@@ -42,8 +42,11 @@
             </div>
         </div>
     </section>
-    <section id="Edit">
-        <a class="text-white" href="{{ route('teams.create') }}">Buat Post Baru</a>
-        <br><br>
+    <section id="Edit" class="flex justify-center">
+        <div class="flex border border-2 border-mavs-navy w-5xl items-center justify-center">
+            <div class="flex grid grid-cols-3 items-center justify-center rounded-full">
+                <a class="text-white" href="{{ route('teams.create') }}">Buat Post Baru</a>
+            </div>
+        </div>
     </section>
 @endsection

@@ -30,11 +30,14 @@ class GameController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'home_team_id'=> '',
-            'away_team_id'=> '',
-            'scheduled_date'=> '',
+            'home_team_id'=> 'required|exists:teams,id',
+            'away_team_id'=> 'required|exists:teams,id',
+            'scheduled_date'=> 'required|date',
             'game_status'=> 'required|string|max:50',
         ]);
+
+        Game::create([$request->all()]);
+        return redirect()->route('games.index')->with('success','The game is inserted successfully.');
     }
 
     /**
@@ -42,7 +45,7 @@ class GameController extends Controller
      */
     public function show(Game $game)
     {
-        //
+        return view('games.show', compact('game'));
     }
 
     /**
@@ -50,7 +53,7 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        //
+        return view('games.edit', compact('game'));
     }
 
     /**
@@ -58,7 +61,14 @@ class GameController extends Controller
      */
     public function update(Request $request, Game $game)
     {
-        //
+        $request->validate([
+            'home_team_id'=> 'required|exists:teams,id',
+            'away_team_id'=> 'required|exists:teams,id',
+            'scheduled_date'=> 'required|date',
+            'game_status'=> 'required|string|max:50',
+        ]);
+        $game->update($request->all());
+        return redirect()->route('games.update')->with('success','The game is edited successfully.');
     }
 
     /**
@@ -66,6 +76,7 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        //
+        $game->delete();
+        return redirect()->route('games.index')->with('success','The game is edited successfully deleted.');
     }
 }
