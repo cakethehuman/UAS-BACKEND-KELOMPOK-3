@@ -19,7 +19,7 @@
                         <div class="border border-3 border-mavs-navy rounded-2xl w-full">
                             <div class="flex flex-col px-5 py-5 items-center justify-center">
                                 <img 
-                                class = "w-36 h-36 object-contain items-center"
+                                class = "w-38 h-38 object-contain items-center"
                                 src={{ asset($team -> logo) }} 
                                 alt="teamLogo">
                                 <h1 class = "text-white text-md">{{ $team -> name }}</h1>
