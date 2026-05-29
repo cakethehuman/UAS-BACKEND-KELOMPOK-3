@@ -39,7 +39,9 @@
         </div>
     </section>
     <section id="Edit">
-        <a class="text-white" href="{{ route('teams.create') }}">Buat Post Baru</a>
+        @can('create', App\Models\Team::class) <!-- terhubung dengan policy yang ada -->
+		<a class="text-white" href="{{ route('teams.create') }}">Buat Post Baru</a>
+	@endcan
         <br><br>
     </section>
 @endsection

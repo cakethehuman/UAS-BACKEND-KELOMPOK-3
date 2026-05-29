@@ -79,26 +79,8 @@
 
         public function create()
         {
-            return view('profile.create');
-        }
-
-        public function store(Request $request) {
-            $request->validate([
-                'name' => 'required|string|max:50',
-                'email' => 'required|string|email|max:50|unique:users',
-                'password' => 'required|string|max:50',
-            ]);
-
-            $profil = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($request->password),
-            ]);
-
-            Auth::login($profil);
-
-            //return redirect()->route('login')->with('success','User has been created');
-            return redirect()->route('profile.index')->with('success','User successfully created');
+            
+            return view('auth.register');
         }
 
         public function delete(){
@@ -119,7 +101,7 @@
                     'name' => 'Name does not match your account.',
                 ]);
             }
-            
+
             if (!$request->email == !$profil->mail) {
                 return back()->withErrors([
                     'emaildest'=>'Something is wrong!',
@@ -138,6 +120,6 @@
             $request->session()->invalidate();
             $request->session()->regenerateToken();
             
-            return redirect('/')->with('success','Account deleted successfully.');
+            return redirect('/profile')->with('success','Account deleted successfully.');
         }
     }

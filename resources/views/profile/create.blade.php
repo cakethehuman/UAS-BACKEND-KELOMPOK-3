@@ -5,7 +5,7 @@
         <h1 class="text-white">Create User</h1>
     </div>
     <section id="form">
-        <form method='POST' action="{{route('profile.store')}}">
+        <form method='POST' action="{{route('profile.create')}}">
             @csrf
             <div class="flex flex-col gap-5">
                 <input class='border border-mavs-navy bg-white rounded-full' name="name" type="text" required>

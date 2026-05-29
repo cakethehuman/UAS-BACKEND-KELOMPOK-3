@@ -10,7 +10,10 @@
     @endif
 
     <div class="mb-6">
-        <a class="text-white bg-blue-700 px-4 py-2 rounded-full text-sm font-semibold" href="{{ route('news.create') }}">Create New Article</a>
+	@can('create', App\Models\Team::class) <!-- terhubung dengan policy yang ada -->
+		<a class="text-white bg-blue-700 px-4 py-2 rounded-full text-sm font-semibold" href="{{ route('news.create') }}">Create New Article</a>
+	@endcan
+
     </div>
 
     @if($articles->isEmpty())
@@ -27,19 +30,22 @@
                     </p>
                     
                     <div class="flex items-center gap-3">
+			<a class="text-[#DC143C] font-semibold text-sm hover:underline" href="{{ route('news.show', $article->slug) }}">View</a>
+			@can('update', $article) <!-- terhubung dengan policy yang ada -->
+				<span class="text-gray-600">|</span>
+				<a class="text-yellow-500 font-semibold text-sm hover:underline" href="{{ route('news.edit', $article->slug) }}">Edit</a>
+			@endcan
 
-                        <a class="text-[#DC143C] font-semibold text-sm hover:underline" href="{{ route('news.show', $article->slug) }}">View</a>
-                        <span class="text-gray-600">|</span>
-                        
-                        <a class="text-yellow-500 font-semibold text-sm hover:underline" href="{{ route('news.edit', $article->slug) }}">Edit</a>
-                        <span class="text-gray-600">|</span>
-                        
+			                        
                         {{-- Bug fix: no more JavaScrip confirm --}}
-                        <form action="{{ route('news.destroy', $article->slug) }}" method="POST" class="inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="text-red-500 font-semibold text-sm hover:underline">Delete</button>
-                        </form>
+			@can('delete', $article)
+				<span class="text-gray-600">|</span>
+				<form action="{{ route('news.destroy', $article->slug) }}" method="POST" class="inline">
+				    @csrf
+				    @method('DELETE')
+				    <button type="submit" class="text-red-500 font-semibold text-sm hover:underline">Delete</button>
+				</form>
+			@endcan
                     </div>
                     
                 </div>
