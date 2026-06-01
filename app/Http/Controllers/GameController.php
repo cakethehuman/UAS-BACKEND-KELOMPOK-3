@@ -36,7 +36,7 @@ class GameController extends Controller
             'game_status'=> 'required|string|max:50',
         ]);
 
-        Game::create([$request->all()]);
+        Game::create($request->all());
         return redirect()->route('games.index')->with('success','The game is inserted successfully.');
     }
 

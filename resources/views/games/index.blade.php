@@ -8,14 +8,16 @@
         </h1>
     </div>
     <section id="teams" class="flex justify-center">
-        <div class="flex justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-5xl my-5">
+        <div class="flex justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-5xl my-3">
             <div class="grid grid-cols-5 gap-25 px-8 py-8">
                 @if($games -> isEmpty())
                     <p class="text-white">No games</p>
                 @else
-                    <div class="border border-navy w-2xl">
-                        <h1>hello</h1>
-                    </div>
+                    @foreach($games as $game)
+                        <div class="text-white border border-3 border-mavs-navy w-xl rounded-lg">
+                            <h1>{{ $game -> home_team_id }}</h1>
+                        </div>
+                    @endforeach
                 @endif
             </div>
         </div>
