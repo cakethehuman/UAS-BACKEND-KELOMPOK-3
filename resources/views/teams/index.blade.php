@@ -9,7 +9,7 @@
     </div>
     </section>
     <section id="teams" class="flex justify-center">
-        <div class="flex justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-5xl my-5">
+        <div class="flex justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-5xl my-3">
             <div class="grid grid-cols-3 gap-25 px-6 py-6">
                 @if($teams -> isEmpty())
                     <p class="text-white">No teams</p>
