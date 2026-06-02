@@ -8,14 +8,48 @@
         </h1>
     </div>
     <section id="teams" class="flex justify-center">
-        <div class="flex justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-5xl my-3">
-            <div class="grid grid-cols-5 gap-25 px-8 py-8">
+        <div class="flex flex-row items-center justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-6xl my-3">
+            <div class="grid grid-cols-2 gap-5 px-8 py-8">
                 @if($games -> isEmpty())
                     <p class="text-white">No games</p>
                 @else
                     @foreach($games as $game)
-                        <div class="text-white border border-3 border-mavs-navy w-xl rounded-lg">
-                            <h1>{{ $game -> home_team_id }}</h1>
+                        <div class="text-white border border-3 border-mavs-navy rounded-lg">
+                            <div class="flex flex-row justify-center items-center gap-3 my-5 mx-5">
+                                <div class="flex flex-col items-center justify-center">
+                                    <img 
+                                    class = "w-20 h-20 object-contain items-center"
+                                    src={{ asset($game->homeTeam->logo) }} 
+                                    alt="HomeTeamLogo">
+                                    <h1>{{ $game->homeTeam->name }}</h1>
+                                </div>
+                                <div class="flex flex-col items-center justify-center">
+                                    <h1>{{ $game->scheduled_date->format('D d M') }}</h1>
+                                    <h1>{{ $game->scheduled_date->format('H:i') }}</h1>
+                                    <h1>{{ $game->awayTeam->arena }}</h1>
+                                </div>
+                                <div class="flex flex-col items-center justify-center">
+                                    <img  
+                                    class = "w-20 h-20 object-contain items-center"
+                                    src={{ asset($game->AwayTeam->logo) }} 
+                                    alt="AwayTeamLogo">
+                                    <h1>{{ $game->awayTeam->name }}</h1>
+                                </div>
+                            </div>
+                            <div class="flex flex-row justify-center items-center gap-2 py-2">
+                                <a class="bg-blue-700 
+                                rounded-full w-7 h-5 text-white text-xs flex items-center 
+                                justify-center" href="{{ route('games.show', $game) }}">🔍</a>
+                                <a class="bg-yellow-500 
+                                rounded-full w-7 h-5 text-white text-xs flex items-center 
+                                justify-center" href="{{ route('games.edit', $game) }}">📝</a>
+                                <form action="{{ route('games.destroy', $game) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class='bg-red-700 rounded-full w-7 h-5 text-white text-xs 
+                                    flex items-center justify-center' type="submit">X</button>
+                                </form>
+                            </div>
                         </div>
                     @endforeach
                 @endif

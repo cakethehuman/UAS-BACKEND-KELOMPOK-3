@@ -25,7 +25,7 @@
                         <h1 class="text-white">scheduled date</h1>
                         <input 
                         class='border border-mavs-navy bg-white rounded-full pl-4' 
-                        name="scheduled_date" type="date" required>
+                        name="scheduled_date" type="datetime-local" required>
 
                         <label class="text-white" for="game_status">game status : </label>
                         <select class="border border-mavs-navy bg-white rounded-full pl-4" name="game_status" id="game_status">

@@ -12,7 +12,11 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::orderBy("scheduled_date","desc")->paginate(10);
+        $games = Game::with(['homeTeam', 'awayTeam'])
+        ->orderBy('scheduled_date', 'desc')
+        ->paginate(10);
+
+
         return view("games.index", compact("games"));
     }
 
@@ -68,7 +72,7 @@ class GameController extends Controller
             'game_status'=> 'required|string|max:50',
         ]);
         $game->update($request->all());
-        return redirect()->route('games.update')->with('success','The game is edited successfully.');
+        return redirect()->route('games.index')->with('success','The game is edited successfully.');
     }
 
     /**
