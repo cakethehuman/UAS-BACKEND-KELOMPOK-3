@@ -6,6 +6,7 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\GameController;
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentsController;
 
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\AuthController;
@@ -35,6 +36,8 @@ Route::middleware('auth')->group(function (){
   Route::resource('games', GameController::class)->middleware('auth');;
 	// Untuk news page
 	Route::resource('news', ArticleController::class)->parameters(['news' => 'slug']);
+	Route::resource('comments', CommentsController::class)->parameters(['comments' => 'comments']);
+
     //Untuk store page
   Route::resource('store', StoreController::class);
 });
