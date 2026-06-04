@@ -15,18 +15,18 @@ return new class extends Migration
             $table->id();
 
             // Basicly ini untuk nama table    
-            $table->string('name');          
-            $table->string('city');          
-            $table->string('abbreviation');  
+            $table->string('name', 50);          
+            $table->string('city', 50);          
+            $table->string('abbreviation', 10);  
 
-            $table->string('logo')->nullable();
+            $table->string('logo', 255)->nullable();
 
-            $table->string('conference');    
-            $table->string('division');      
+            $table->string('conference', 50);    
+            $table->string('division', 50);      
     
             $table->integer('wins')->default(0);
             $table->integer('losses')->default(0);
-            $table->string('arena');
+            $table->string('arena', 100);
 
             
 

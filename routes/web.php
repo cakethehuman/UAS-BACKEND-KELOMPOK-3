@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\GameController;
 
 use App\Http\Controllers\ArticleController;
 
@@ -32,6 +33,8 @@ Route::middleware('auth')->group(function (){
 	// Untuk teams page
 	// bisa seperti ini Route::resource('teams', TeamController::class)->middleware('auth'); tetapi harus satu satu
 	Route::resource('teams', TeamController::class)->middleware('auth');
+  
+  Route::resource('games', GameController::class)->middleware('auth');;
 	// Untuk news page
 	Route::resource('news', ArticleController::class)->parameters(['news' => 'slug']);
     //Untuk store page
@@ -48,6 +51,8 @@ Route::middleware('auth')->group(function (){
 	Route::delete('/profile/delete', [UserController::class, 'destroy'])->name('profile.destroy');
 	
 	Route::resource('profile', UserController::class);
+  // untuk store page
+  Route::resource('store', StoreController::class);
 });
 
 
@@ -56,5 +61,4 @@ Route::middleware('auth')->group(function (){
 
 
 
-//Untuk store page
-Route::resource('store', StoreController::class);
+

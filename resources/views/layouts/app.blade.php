@@ -26,6 +26,10 @@
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Teams</a>
+                                    <a href="{{ url('/games') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
+                                        hover:text-white border-2 border-mavs-navy
+                                         rounded-full transition duration-300">Games</a>
                                     <a href="{{ url('/news') }}" aria-current="page" class="px-3 py-2 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
