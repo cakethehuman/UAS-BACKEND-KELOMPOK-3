@@ -30,5 +30,22 @@
                 </div>  
         </div>
         <h1 class="flex items-center justify-center">Game Status : {{ $game->game_status }}</h1>
+        <div class="flex items-center justify-center">
+            <div class="flex border border-3 items-center justify-center w-xl h-xl">
+                <div>
+                    @foreach($game->seats as $seat)
+                        <p>{{ $seat->seat_number }}</p>
+                    @endforeach
+                </div>
+                <div>
+                    <a class="text-white border border-2 
+                    border-green-600 rounded-full 
+                    h-7 px-5 bg-green-600" href="{{ route('games.seats.create', $game->id) }}"> + Buat Post Baru</a>
+
+                </div>
+                <a href=""></a>
+            </div>
+        </div>
+        
     </div>
 @endsection

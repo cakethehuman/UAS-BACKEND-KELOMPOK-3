@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Team;
+use App\Models\Seat;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -21,10 +22,11 @@ class DatabaseSeeder extends Seeder
          User::factory()->create([
              'name' => 'Admin User',
              'email' => 'admin@example.com',
-	     'is_admin' => true,
-	     'password' => '12345678910',
+	        'is_admin' => true,
+	        'password' => '12345678910',
          ]);
 
+        // insert team info
         Team::insert([
         [
             'name' => 'Dallas Mavericks',
@@ -82,5 +84,6 @@ class DatabaseSeeder extends Seeder
             'arena' => 'Frost Bank Center',
         ],
         ]);
+
     }
 }
