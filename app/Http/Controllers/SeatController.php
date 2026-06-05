@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Seat;
+use App\Models\Game;
 use Illuminate\Http\Request;
 
 class SeatController extends Controller
@@ -19,9 +20,9 @@ class SeatController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($gameId)
     {
-        return view("seats.create");
+        return view("seats.create", compact('gameId'));
     }
 
     /**
@@ -39,15 +40,15 @@ class SeatController extends Controller
         $data['game_id'] = $gameId;
         Seat::create($data);
 
-        return redirect()->route('seats.index')->with('success','The game is inserted successfully.');
+        return redirect()->route('games.index')->with('success','The game is inserted successfully.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Seat $seat)
+    public function show(Game $game,Seat $seat)
     {
-        //
+        return view('seats.show', compact('game', 'seat'));
     }
 
     /**
@@ -71,6 +72,7 @@ class SeatController extends Controller
      */
     public function destroy(Seat $seat)
     {
-        //
+        $seat->delete();
+        return redirect()->route('games.index')->with('success', 'Seat Has Been deleted.');
     }
 }

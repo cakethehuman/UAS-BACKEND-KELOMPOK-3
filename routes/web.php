@@ -32,19 +32,24 @@ Route::middleware('guest')->controller(AuthController::class)->group(function ()
 
 });
 Route::middleware('auth')->group(function (){	
-  Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+	Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 	// Untuk teams page
 	// bisa seperti ini Route::resource('teams', TeamController::class)->middleware('auth'); tetapi harus satu satu
 	Route::resource('teams', TeamController::class)->middleware('auth');
   
-  Route::resource('games', GameController::class)->middleware('auth');
-	Route::resource('games.seats', SeatController::class)->middleware('auth');
+	// Games
+  	Route::resource('games', GameController::class)->middleware('auth');
+	Route::get('/games/{game}/seats/create', [SeatController::class, 'create'])->name('seats.create');
+	Route::post('/games/{game}/seats', [SeatController::class, 'store'])->name('seats.store');
+	Route::get('/games/{game}/seats/{seat}', [SeatController::class, 'show'])->name('seats.show');
+	Route::delete('/seats/{seat}', [SeatController::class, 'destroy'])->name('seats.destroy');
+
 	// Untuk news page
 	Route::resource('news', ArticleController::class)->parameters(['news' => 'slug']);
 	Route::resource('comments', CommentsController::class)->parameters(['comments' => 'comments']);
 
-  //Untuk store page
-  Route::resource('store', StoreController::class);
+  	//Untuk store page
+  	Route::resource('store', StoreController::class);
 
 	//Untuk mengedit profile 
 	Route::get('/profile/edit', [UserController::class, 'edit'])->name('profile.edit');
@@ -58,7 +63,7 @@ Route::middleware('auth')->group(function (){
 	
 	Route::resource('profile', UserController::class);
   // untuk store page
-  Route::resource('store', StoreController::class);
+  	Route::resource('store', StoreController::class);
 });
 
 
