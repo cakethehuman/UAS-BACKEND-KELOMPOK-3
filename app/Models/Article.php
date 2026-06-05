@@ -15,4 +15,9 @@ class Article extends Model
     {
         return 'slug';
     }
+    
+    public function comments()
+    {
+        return $this->hasMany(Comments::class);
+    }
 }
