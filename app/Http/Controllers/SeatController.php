@@ -12,7 +12,8 @@ class SeatController extends Controller
      */
     public function index()
     {
-        //
+        $seats = Seat::all();
+        return view("seats.show", compact("seats"));
     }
 
     /**
@@ -20,15 +21,25 @@ class SeatController extends Controller
      */
     public function create()
     {
-        //
+        return view("seats.create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $gameId)
     {
-        //
+        $request->validate([
+            'seat_price'=> 'required|numeric|decimal:0,2',
+            'seat_number'=> 'required|string',
+            'seat_availability'=> 'required|string|max:50',
+        ]);
+
+        $data = $request->all();
+        $data['game_id'] = $gameId;
+        Seat::create($data);
+
+        return redirect()->route('seats.index')->with('success','The game is inserted successfully.');
     }
 
     /**

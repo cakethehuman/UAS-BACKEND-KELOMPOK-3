@@ -15,4 +15,8 @@ class Game extends Model
     public function AwayTeam(){
         return $this->belongsTo(Team::class,'away_team_id');
     }
+    public function seats()
+    {
+        return $this->hasMany(Seat::class);
+    }
 }
