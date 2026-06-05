@@ -22,3 +22,13 @@ Anggota kelompok <br>
 
 First run npm run dev
 then php artisan serve
+
+# Seeder
+make sure to seed the database
+
+php artisan db:seed
+
+admin access account :
+        Username    : Admin User
+        Email       : admin@example.com
+        Password    : 12345678910
