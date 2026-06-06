@@ -32,10 +32,12 @@
         <h1 class="flex items-center justify-center">Game Status : {{ $game->game_status }}</h1>
         <div class="flex items-center justify-center">
             <div class="flex border border-3 border-mavs-navy 
-            items-center justify-center w-xl h-50 rounded-lg">
-                <div class="grid grid-cols-10">
+            items-center justify-center w-lg h-auto rounded-lg">
+                <div class="grid grid-cols-10 gap-2 my-5">
                     @foreach($game->seats as $seat)
-                        <p>{{ $seat->seat_number }}</p>
+                        <div class="flex border border-3 border-mavs-navy items-center justify-center w-10 h-10">
+                            <a href="{{ route('games.seats.show', [$game,$seat]) }}">{{ $seat->seat_number }}</a>
+                        </div>
                     @endforeach
                 </div>
             </div>
