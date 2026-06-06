@@ -19,4 +19,26 @@ class Game extends Model
     {
         return $this->hasMany(Seat::class);
     }
+
+    protected static function booted()
+    {
+        static::created(function (Game $game) {
+            $seats = [];
+            $rows = ['A', 'B', 'C', 'D', 'E']; // 5 rows
+
+            foreach ($rows as $row) {
+                for ($col = 1; $col <= 10; $col++) { 
+                    $seats[] = [
+                        'game_id'           => $game->id,
+                        'seat_number'       => $row . $col, 
+                        'seat_price'        => 50.00,
+                        'seat_availability' => 'Available',
+                        'created_at'        => now(),
+                        'updated_at'        => now(),
+                    ];
+                }
+            }
+            Seat::insert($seats); 
+    });
+    }
 }

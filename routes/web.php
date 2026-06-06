@@ -39,10 +39,8 @@ Route::middleware('auth')->group(function (){
   
 	// Games
   	Route::resource('games', GameController::class)->middleware('auth');
-	Route::get('/games/{game}/seats/create', [SeatController::class, 'create'])->name('seats.create');
-	Route::post('/games/{game}/seats', [SeatController::class, 'store'])->name('seats.store');
-	Route::get('/games/{game}/seats/{seat}', [SeatController::class, 'show'])->name('seats.show');
-	Route::delete('/seats/{seat}', [SeatController::class, 'destroy'])->name('seats.destroy');
+	Route::resource('games.seats', SeatController::class)->only(['create', 'store', 'show']);
+    Route::resource('seats', SeatController::class)->only(['edit', 'destroy', 'update']);
 
 	// Untuk news page
 	Route::resource('news', ArticleController::class)->parameters(['news' => 'slug']);

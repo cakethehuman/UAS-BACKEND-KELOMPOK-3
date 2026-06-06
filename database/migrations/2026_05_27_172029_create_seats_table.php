@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('seat_number', 50);
             $table->string('seat_availability', 50)->default('AVAILABLE');
             $table->timestamps();
+            $table->unique(['game_id', 'seat_number']);
         });
     }
 

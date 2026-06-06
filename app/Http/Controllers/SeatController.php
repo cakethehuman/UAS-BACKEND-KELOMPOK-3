@@ -56,7 +56,7 @@ class SeatController extends Controller
      */
     public function edit(Seat $seat)
     {
-        //
+        return view('seats.edit', compact('seat'));
     }
 
     /**
@@ -64,7 +64,14 @@ class SeatController extends Controller
      */
     public function update(Request $request, Seat $seat)
     {
-        //
+        $validated = $request->validate([
+            'seat_price'=> 'required|numeric|decimal:0,2',
+            'seat_number'=> 'required|string',
+            'seat_availability'=> 'required|string|max:50',
+        ]);
+        
+        $seat->update($validated);
+        return redirect()->route('games.index')->with('success', 'Product successfully updated.');
     }
 
     /**
