@@ -14,7 +14,7 @@
                     <p class="text-white">No games</p>
                 @else
                     @foreach($games as $game)
-                        <div class="text-white border border-3 border-mavs-navy rounded-lg">
+                        <div class="text-white border border-3 border-mavs-navy rounded-lg hover:border-blue-700">
                             <div class="flex flex-row justify-center items-center gap-3 my-5 mx-5">
                                 <div class="flex flex-col items-center justify-center">
                                     <img 

@@ -35,7 +35,7 @@
             items-center justify-center w-lg h-auto rounded-lg">
                 <div class="grid grid-cols-10 gap-2 my-5">
                     @foreach($game->seats as $seat)
-                        <div class="flex border border-3 border-mavs-navy items-center justify-center w-10 h-10">
+                        <div class="flex border border-3 border-mavs-navy items-center justify-center w-10 h-10 hover:border-blue-700">
                             <a href="{{ route('games.seats.show', [$game,$seat]) }}">{{ $seat->seat_number }}</a>
                         </div>
                     @endforeach
