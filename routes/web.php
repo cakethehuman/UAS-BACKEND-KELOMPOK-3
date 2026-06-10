@@ -14,6 +14,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SeatController;
 
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PlayerController;
 
 Route::get('/', function () {
     return view('Home');
@@ -34,6 +35,9 @@ Route::middleware('auth')->group(function (){
     
 	// Untuk teams page
 	Route::resource('teams', TeamController::class)->middleware('auth');
+
+	//Untuk players page
+	Route::resource('players', PlayerController::class)->middleware('auth');
   
 	// Games
   	Route::resource('games', GameController::class)->middleware('auth');
