@@ -8,13 +8,13 @@
         </h1>
     </div>
     <section id="teams" class="flex justify-center">
-        <div class="flex flex-row items-center justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-6xl my-3">
+        <div class="flex flex-row items-center justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-6xl my-3 bg-gray-900">
             <div class="grid grid-cols-2 gap-5 px-8 py-8">
                 @if($games -> isEmpty())
                     <p class="text-white">No games</p>
                 @else
                     @foreach($games as $game)
-                        <div class="text-white border border-3 border-mavs-navy rounded-lg">
+                        <div class="text-white border border-3 border-mavs-navy rounded-lg hover:border-blue-700 bg-gray-800">
                             <div class="flex flex-row justify-center items-center gap-3 my-5 mx-5">
                                 <div class="flex flex-col items-center justify-center">
                                     <img 

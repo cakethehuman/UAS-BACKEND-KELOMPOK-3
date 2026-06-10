@@ -1,8 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex border border-mavs-navy rounded-full w-3xl px-6 py-2 mb-4">
-        <h1 class="text-white text-xl">News Articles</h1>
+    <div class="flex justify-center items-center">          
+        <h1 class="text-white font-bold text-3xl w-70 h-15 py-2 text-center 
+            border-2 bg-gray-800 border-mavs-navy rounded-full m-2 shadow-lg shadow-mavs-navy">
+            News Articles
+        </h1>
     </div>
 
     @if(session('success'))
