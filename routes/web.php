@@ -12,6 +12,7 @@ use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SeatController;
+use App\Http\Controllers\StandingController;
 
 use App\Http\Controllers\UserController;
 
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function (){
     
 	// Untuk teams page
 	Route::resource('teams', TeamController::class)->middleware('auth');
+	Route::resource('standings', StandingController::class)->middleware('auth');
   
 	// Games
   	Route::resource('games', GameController::class)->middleware('auth');
@@ -61,6 +63,7 @@ Route::middleware('auth')->group(function (){
     
   // untuk store page
   	Route::resource('store', StoreController::class);
+
 });
 
 
