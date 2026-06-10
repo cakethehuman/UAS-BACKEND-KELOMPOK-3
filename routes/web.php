@@ -20,11 +20,9 @@ Route::get('/', function () {
 });
 
 // Untuk register
-// memanggil fungsi showRegister, dan showLogin pada AuthController
-// Menampilkan
 Route::middleware('guest')->controller(AuthController::class)->group(function (){
-	Route::get('/register', 'showRegister' )->name('show.register');
-	Route::get('/login', 'showLogin')->name('show.login');
+	Route::get('/register', 'showRegister' )->name('show.register'); // memanggil fungsi showRegister, dan showLogin pada AuthController
+	Route::get('/login', 'showLogin')->name('show.login'); // Menampilkan
 
 	// Untuk post
 	Route::post('/register', 'register')->name('register');
@@ -33,8 +31,8 @@ Route::middleware('guest')->controller(AuthController::class)->group(function ()
 });
 Route::middleware('auth')->group(function (){	
 	Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    
 	// Untuk teams page
-	// bisa seperti ini Route::resource('teams', TeamController::class)->middleware('auth'); tetapi harus satu satu
 	Route::resource('teams', TeamController::class)->middleware('auth');
   
 	// Games
@@ -60,6 +58,7 @@ Route::middleware('auth')->group(function (){
 	Route::delete('/profile/delete', [UserController::class, 'destroy'])->name('profile.destroy');
 	
 	Route::resource('profile', UserController::class);
+    
   // untuk store page
   	Route::resource('store', StoreController::class);
 });
