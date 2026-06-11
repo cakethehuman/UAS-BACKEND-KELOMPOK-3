@@ -13,7 +13,7 @@ class StandingController extends Controller
      */
     public function index()
     {
-        $standings = Standing::all();
+        $standings = Standing::with(['team'])->get();
         return view('standings.index', compact('standings'));
     }
 
@@ -23,7 +23,6 @@ class StandingController extends Controller
     public function create()
     {
         $teams = Team::all();
-
         return view('standings.create', compact('teams'));
     }
 
@@ -33,14 +32,11 @@ class StandingController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'team_id'=> 'required|numeric|decimal:0,2',
+            'team_id'=> 'required|exists:teams,id',
         ]);
 
-        $data = $request->all();
-        $teams = Team::all();
-        Standing::create($data);
-
-        return view('standings.create', compact('teams'))->with('success','The standing is inserted successfully.');
+        Standing::create($request->all());
+        return redirect()->route('games.index')->with('success','The standing is inserted successfully.');
 
     }
 
@@ -71,7 +67,7 @@ class StandingController extends Controller
     public function update(Request $request, Standing $standing)
     {
         $validated = $request->validate([ 
-            'team_id' => ['required', 'exists:teams,id'],
+            'team_id' => 'required|exists:teams,id',
         ]);
 
         $standing->update($validated); 
