@@ -1,49 +1,58 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto px-4 py-6">
-    <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-bold">Standings</h1>
-        <a href="{{ route('standings.create') }}" class="bg-blue-600 text-white px-4 py-2 rounded">Tambah Standing</a>
+    <div class="flex justify-center items-center">          
+        <h1 class="text-white font-bold text-3xl w-50 h-15 py-2 text-center 
+            border-2 bg-gray-800 border-mavs-navy rounded-full m-5 shadow-lg shadow-mavs-navy">
+            Standings
+        </h1>
     </div>
-
-    @if(session('success'))
-        <div class="mb-4 rounded bg-green-100 p-3 text-green-800">
-            {{ session('success') }}
-        </div>
-    @endif
-
-    <div class="overflow-x-auto rounded bg-white p-4 shadow">
-        @if($standings->isEmpty())
-            <p class="text-gray-600">Belum ada data standing.</p>
-        @else
-            <table class="min-w-full text-left">
-                <thead>
-                    <tr class="border-b">
-                        <th class="py-2">#</th>
-                        <th class="py-2">Tim</th>
-                        <th class="py-2">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($standings as $index => $standing)
-                        <tr class="border-b">
-                            <td class="py-2">{{ $index + 1 }}</td>
-                            <td class="py-2">{{ $standing->team?->name ?? '-' }}</td>
-                            <td class="py-2">
-                                <a href="{{ route('standings.show', $standing) }}" class="mr-2 text-blue-600">Detail</a>
-                                <a href="{{ route('standings.edit', $standing) }}" class="mr-2 text-yellow-600">Edit</a>
-                                <form action="{{ route('standings.destroy', $standing) }}" method="POST" class="inline">
+    <section id="standings" class="flex justify-center">
+        <div class="flex flex-row items-center justify-center border border-mavs-navy border-3 shadow-md shadow-mavs-navy rounded-lg w-5xl my-3 bg-gray-900">
+            <div class="flex flex-col gap-5 px-8 py-8">
+                <div class="grid grid-cols-4 items-center text-white font-bold border-3 border-mavs-navy rounded-lg bg-gray-800 px-6 py-4 w-4xl">
+                    <h1 class="col-span-1 text-left">Team</h1>
+                    <h1 class="col-span-1 text-center">Win</h1>
+                    <h1 class="col-span-1 text-center">Loss</h1>
+                    <h1 class="col-span-1 text-center">Actions</h1>
+                </div>
+                @if($standings -> isEmpty())
+                    <p class="text-white">No Standings</p>
+                @else
+                    @foreach($standings as  $standing)
+                        <div class="grid grid-cols-4 items-center text-white border-3 border-mavs-navy rounded-lg bg-gray-800 px-6 py-4">
+                            <h1 class="col-span-1 text-left">{{ $standing->team->name }}</h1>
+                            <h1 class="col-span-1 text-center">{{ $standing->team->wins }}</h1>
+                            <h1 class="col-span-1 text-center">{{ $standing->team->losses }}</h1>
+                            <div class="flex flex-row justify-center items-center gap-2 py-2">
+                                <a class="bg-blue-700 
+                                rounded-full w-7 h-5 text-white text-xs flex items-center 
+                                justify-center" href="{{ route('standings.show',  $standing) }}">🔍</a>
+                                <a class="bg-yellow-500 
+                                rounded-full w-7 h-5 text-white text-xs flex items-center 
+                                justify-center" href="{{ route('standings.edit',  $standing) }}">📝</a>
+                                <form action="{{ route('standings.destroy',  $standing) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="text-red-600">Hapus</button>
+                                    <button class='bg-red-700 rounded-full w-7 h-5 text-white text-xs 
+                                    flex items-center justify-center' type="submit">X</button>
                                 </form>
-                            </td>
-                        </tr>
+                            </div>
+                        </div>
                     @endforeach
-                </tbody>
-            </table>
-        @endif
+                @endif
+            </div>
+        </div>
+    </section>
+    <div class="flex items-center justify-center">
+        <a href="{{ route('standings.create') }}" 
+            class="w-3xl my-4 px-3 py-2 font-semibold text-center 
+            text-white transition duration-200 ease-in-out 
+            bg-green-500 rounded-lg hover:bg-green-500/90 
+            focus:outline-none focus:ring-2 focus:ring-gray-500 
+            focus:ring-offset-2 focus:ring-offset-gray-800">
+            Add Standings
+        </a>
     </div>
-</div>
 @endsection
+

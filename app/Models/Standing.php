@@ -6,10 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Standing extends Model
 {
-    protected $fillable = [
-        'team_id',
-    ];
-
+    protected $fillable = ['team_id'];
     public function team()
     {
         return $this->belongsTo(Team::class);

@@ -16,7 +16,6 @@
 
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
-                                <!-- Current: "bg-gray-950/50 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
                                 @auth
                                     <a href="{{ url('/') }}" aria-current="page" class="px-3 py-2 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
@@ -42,6 +41,10 @@
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Profile</a>
+                                    <a href="{{ url('/standings') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
+                                        hover:text-white border-2 border-mavs-navy
+                                        rounded-full transition duration-300">Standing</a>
                                 @endauth
                                 <!-- Konten yang diwrap oleh directive guest hanya ditampilkan oleh user yang belum login atau belum terautentikasi -->
                                 @guest

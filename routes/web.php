@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\GameController;
-use App\Http\Controllers\SeaController;
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentsController;
