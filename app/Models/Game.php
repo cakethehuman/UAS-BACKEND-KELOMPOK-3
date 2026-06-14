@@ -24,7 +24,7 @@ class Game extends Model
     {
         static::created(function (Game $game) {
             $seats = [];
-            $rows = ['A', 'B', 'C', 'D', 'E']; // 5 rows
+            $rows = ['A', 'B', 'C', 'D', 'E']; 
 
             foreach ($rows as $row) {
                 for ($col = 1; $col <= 10; $col++) { 
