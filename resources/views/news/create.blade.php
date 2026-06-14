@@ -1,21 +1,35 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-white">Create Article</h1>
-    <p><a href="{{ route('news.index') }}" style="color: #DC143C; font-weight: bold;">Cancel</a></p>
+    <div class="flex items-center justify-center">          
+        <h1 class="text-white font-bold text-3xl w-70 h-15 py-2 text-center 
+            border-2 bg-gray-800 border-mavs-navy rounded-full m-2 shadow-lg shadow-mavs-navy">
+            Create News
+        </h1>
+    </div>
 
-    <form action="{{ route('news.store') }}" method="POST" class="text-white">
-        @csrf
-        
-        Title: <br>
-        <input type="text" name="title" class="text-white bg-slate-900 border border-mavs-navy rounded p-1 w-full max-w-md" required><br><br>
+    <section id="form">
+        <div class="flex items-center justify-center">
+            <div class="flex flex-col border border-3 border-mavs-navy px-2 py-4 w-4xl rounded-xl">
+                <form action="{{ route('news.store') }}" method="POST" class="text-white">
+                    @csrf
+                    
+                    <h1>Title : </h1>
+                    <input type="text" name="title" class="text-white bg-slate-900 border border-mavs-navy rounded p-1 w-full" required><br><br>
 
-        Image URL: <br>
-        <input type="url" name="image" class="text-white bg-slate-900 border border-mavs-navy rounded p-1 w-full max-w-md"><br><br>
+                    <h1>Image URL :</h1>
+                    <input type="url" name="image" class="text-white bg-slate-900 border border-mavs-navy rounded p-1 w-full"><br><br>
 
-        Content: <br>
-        <textarea name="content" rows="5" class="text-white bg-slate-900 border border-mavs-navy rounded p-1 w-full max-w-md" required></textarea><br><br>
+                    <h1>Content : </h1> 
+                    <textarea name="content" rows="5" class="text-white bg-slate-900 border border-mavs-navy rounded p-1 w-full" required></textarea><br><br>
+                    <div class="flex flex-row gap-3">
+                        <button type="submit" style="color: #007bff; font-weight: bold;">Publish</button>
+                        <p><a href="{{ route('news.index') }}" style="color: #DC143C; font-weight: bold;">Cancel</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
 
-        <button type="submit" style="color: #007bff; font-weight: bold;">Publish</button>
-    </form>
+    
 @endsection
