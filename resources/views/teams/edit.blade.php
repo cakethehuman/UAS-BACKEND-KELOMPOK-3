@@ -33,14 +33,24 @@
                     value="{{ $team->logo }}">
 
                     <h1 class="text-white">conference</h1>
-                    <input name="conference" 
-                    class = "border border-mavs-navy bg-white rounded-full pl-4" 
-                    value="{{ $team->conference }}">
+                    <select name="conference" class="border border-mavs-navy bg-white rounded-full pl-4">
+                        <option value="">Select a Confrence : </option>
+                        @foreach($conference as $cf)
+                            <option value="{{ $cf }}" @selected($team->conference == $cf)>
+                                {{ $cf }}
+                            </option>
+                        @endforeach
+                    </select>
 
                     <h1 class="text-white">division</h1>
-                    <input name="division" 
-                    class = "border border-mavs-navy bg-white rounded-full pl-4" 
-                    value="{{ $team->division }}">
+                    <select name="division" class="border border-mavs-navy bg-white rounded-full pl-4">
+                    <option value="">Select a Devision : </option>
+                        @foreach($devision as $div)
+                            <option value="{{ $div }}" @selected($team->division == $div)>
+                                {{ $div }}
+                            </option>
+                        @endforeach
+                    </select>
 
                     <h1 class="text-white">wins</h1>
                     <input name="wins" 
