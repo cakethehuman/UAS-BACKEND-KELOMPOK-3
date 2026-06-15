@@ -38,12 +38,16 @@
                                 <td class="px-4 py-4">
                                     <div class="flex flex-wrap gap-2">
                                         <a class="bg-blue-700 rounded-full w-8 h-8 text-white text-xs flex items-center justify-center" href="{{ route('players.show', $players) }}">🔍</a>
-                                        <a class="bg-yellow-500 rounded-full w-8 h-8 text-white text-xs flex items-center justify-center" href="{{ route('players.edit', $players) }}">📝</a>
-                                        <form action="{{ route('players.destroy', $players) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="bg-red-700 rounded-full w-8 h-8 text-white text-xs flex items-center justify-center" type="submit" action='delete'>X</button>
-                                        </form>
+					@can("update", $players)
+						<a class="bg-yellow-500 rounded-full w-8 h-8 text-white text-xs flex items-center justify-center" href="{{ route('players.edit', $players) }}">📝</a>
+					@endcan
+					@can("delete", $players)
+						<form action="{{ route('players.destroy', $players) }}" method="POST">
+						    @csrf
+						    @method('DELETE')
+						    <button class="bg-red-700 rounded-full w-8 h-8 text-white text-xs flex items-center justify-center" type="submit" action='delete'>X</button>
+						</form>
+					@endcan	
                                     </div>
                                 </td>
                             </tr>
@@ -55,10 +59,10 @@
     </section>
 
     @can('create', App\Models\Player::class)
-    <section id="Edit" class="flex justify-center">
-        <div class="flex w-5xl items-center justify-center">
-            <a class="text-white border border-2 border-green-600 rounded-full h-7 px-5 bg-green-600" href="{{ route('players.create') }}"> Create New Player</a>
-        </div>
-    </section>
+	    <section id="Edit" class="flex justify-center">
+		<div class="flex w-5xl items-center justify-center">
+		    <a class="text-white border border-2 border-green-600 rounded-full h-7 px-5 bg-green-600" href="{{ route('players.create') }}"> Create New Player</a>
+		</div>
+	    </section>
     @endcan
 @endsection

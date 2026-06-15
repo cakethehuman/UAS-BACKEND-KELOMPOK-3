@@ -37,18 +37,30 @@
                                 </div>
                             </div>
                             <div class="flex flex-row justify-center items-center gap-2 py-2">
-                                <a class="bg-blue-700 
-                                rounded-full w-7 h-5 text-white text-xs flex items-center 
-                                justify-center" href="{{ route('games.show', $game) }}">🔍</a>
-                                <a class="bg-yellow-500 
-                                rounded-full w-7 h-5 text-white text-xs flex items-center 
-                                justify-center" href="{{ route('games.edit', $game) }}">📝</a>
-                                <form action="{{ route('games.destroy', $game) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class='bg-red-700 rounded-full w-7 h-5 text-white text-xs 
-                                    flex items-center justify-center' type="submit">X</button>
-                                </form>
+				@if(Auth::user()->is_admin)	
+					<a class="bg-blue-700 
+					rounded-full w-7 h-5 text-white text-xs flex items-center 
+					justify-center" href="{{ route('games.show', $game) }}">🔍</a>
+				@else	
+					<a class="bg-blue-700 
+                                	rounded-full w-22 h-5 text-white text-xs flex items-center 
+                                	justify-center" href="{{ route('games.show', $game) }}">🔍</a>
+				@endif
+				@can("update", $game)	
+					<a class="bg-yellow-500 
+					rounded-full w-7 h-5 text-white text-xs flex items-center 
+					justify-center" href="{{ route('games.edit', $game) }}">📝</a>
+				@endcan
+
+				@can("delete", $game)
+					<form action="{{ route('games.destroy', $game) }}" method="POST">
+					    @csrf
+					    @method('DELETE')
+					    <button class='bg-red-700 rounded-full w-7 h-5 text-white text-xs 
+					    flex items-center justify-center' type="submit">X</button>
+					</form>
+				@endcan
+
                             </div>
                         </div>
                     @endforeach
@@ -56,9 +68,11 @@
             </div>
         </div>
     </section>
-    <section id="Edit" class="flex justify-center">
-        <div class="flex w-5xl items-center justify-center">
-            <a class="text-white border border-2 border-green-600 rounded-full h-7 px-5 bg-green-600" href="{{ route('games.create') }}"> + Buat Post Baru</a>
-        </div>
-    </section>
+    @can("create", App\Models\Game::class)
+	    <section id="Edit" class="flex justify-center">
+		<div class="flex w-5xl items-center justify-center">
+		    <a class="text-white border border-2 border-green-600 rounded-full h-7 px-5 bg-green-600" href="{{ route('games.create') }}"> + Buat Post Baru</a>
+		</div>
+	    </section>
+    @endcan
 @endsection

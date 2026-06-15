@@ -7,11 +7,12 @@
             News Articles
         </h1>
     </div>
-    <div class="flex items-center justify-center my-5">
-        <a class="flex text-white bg-blue-700 px-4 py-1 w-50 h-10 rounded-full font-semibold items-center justify-center" 
-        href="{{ route('news.create') }}"> + Add new Article</a>
-    </div>
-
+    @can("create", App\Models\Article::class)  
+	    <div class="flex items-center justify-center my-5">
+		<a class="flex text-white bg-blue-700 px-4 py-1 w-50 h-10 rounded-full font-semibold items-center justify-center" 
+		href="{{ route('news.create') }}"> + Add new Article</a>
+	    </div>
+    @endcan
     @if($articles->isEmpty())
         <p class="text-white">No news available.</p>
     @else
