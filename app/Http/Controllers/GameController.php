@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Game;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Gate;
 class GameController extends Controller
 {
     /**
@@ -25,6 +25,7 @@ class GameController extends Controller
      */
     public function create()
     {
+	Gate::authorize('create', Game::class);
         return view("games.create");
     }
 
@@ -33,6 +34,7 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
+	Gate::authorize('create', Game::class);
         $request->validate([
             'home_team_id'=> 'required|exists:teams,id',
             'away_team_id'=> 'required|exists:teams,id',
@@ -57,6 +59,7 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
+	Gate::authorize('update', $game);	
         return view('games.edit', compact('game'));
     }
 
@@ -65,6 +68,7 @@ class GameController extends Controller
      */
     public function update(Request $request, Game $game)
     {
+	Gate::authorize('update', $game);
         $request->validate([
             'home_team_id'=> 'required|exists:teams,id',
             'away_team_id'=> 'required|exists:teams,id',
@@ -80,6 +84,7 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
+	Gate::authorize('delete', $game);
         $game->delete();
         return redirect()->route('games.index')->with('success','The game is edited successfully deleted.');
     }

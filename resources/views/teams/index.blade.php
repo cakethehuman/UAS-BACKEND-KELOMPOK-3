@@ -18,13 +18,14 @@
                         <!-- border border-3 border-mavs-navy  -->
                         <div class="border border-3 border-mavs-navy rounded-2xl w-full bg-gray-800 hover:border-blue-700">
                             <div class="flex flex-col px-5 py-3 items-center justify-center">
-                                <form class = "flex justify-end w-full" action="{{ route('teams.destroy', $team) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-
-                                        <button class='bg-red-700 rounded-full w-5 h-5 text-white text-xs 
-                                        flex items-center justify-center' type="submit">X</button>
-                                    </form>
+				@can("delete", $team)
+					<form class = "flex justify-end w-full" action="{{ route('teams.destroy', $team) }}" method="POST">
+						@csrf
+						@method('DELETE')
+						<button class='bg-red-700 rounded-full w-5 h-5 text-white text-xs 
+						flex items-center justify-center' type="submit">X</button>
+					</form>
+				@endcan
                                 <img 
                                 class = "w-38 h-38 object-contain items-center"
                                 src={{ asset($team -> logo) }} 
@@ -35,9 +36,11 @@
                                     <a class="bg-blue-700 
                                     rounded-full w-20 h-5 text-white text-xs flex items-center 
                                     justify-center" href="{{ route('teams.show', $team) }}">🔍</a>
-                                    <a class="bg-yellow-500 
-                                    rounded-full w-20 h-5 text-white text-xs flex items-center 
-                                    justify-center" href="{{ route('teams.edit', $team) }}">📝</a>
+				    @can("update", $team)
+					    <a class="bg-yellow-500 
+					    rounded-full w-20 h-5 text-white text-xs flex items-center 
+					    justify-center" href="{{ route('teams.edit', $team) }}">📝</a>
+				    @endcan
                                 </div>
                             </div>
                         </div>

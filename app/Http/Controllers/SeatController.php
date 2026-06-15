@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Seat;
 use App\Models\Game;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SeatController extends Controller
 {
@@ -22,6 +23,7 @@ class SeatController extends Controller
      */
     public function create($gameId)
     {
+	Gate::authorize('create', Seat::class);
         return view("seats.create", compact('gameId'));
     }
 
@@ -30,6 +32,7 @@ class SeatController extends Controller
      */
     public function store(Request $request, $gameId)
     {
+	Gate::authorize('create', Seat::class);
         $request->validate([
             'seat_price'=> 'required|numeric|decimal:0,2',
             'seat_number'=> 'required|string',
@@ -56,6 +59,7 @@ class SeatController extends Controller
      */
     public function edit(Seat $seat)
     {
+	Gate::authorize('update', $seat);
         return view('seats.edit', compact('seat'));
     }
 
@@ -64,6 +68,7 @@ class SeatController extends Controller
      */
     public function update(Request $request, Seat $seat)
     {
+	Gate::authorize('update', $seat);
         $validated = $request->validate([
             'seat_price'=> 'required|numeric|decimal:0,2',
             'seat_number'=> 'required|string',
@@ -79,6 +84,7 @@ class SeatController extends Controller
      */
     public function destroy(Seat $seat)
     {
+	Gate::authorize("delete", $seat);
         $seat->delete();
         return redirect()->route('games.index')->with('success', 'Seat Has Been deleted.');
     }

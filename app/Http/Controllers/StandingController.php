@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Standing;
 use App\Models\Team;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class StandingController extends Controller
 {
@@ -22,6 +23,7 @@ class StandingController extends Controller
      */
     public function create()
     {
+	Gate::authorize("create", Standing::class);	
         $teams = Team::all();
         return view('standings.create', compact('teams'));
     }
@@ -31,6 +33,7 @@ class StandingController extends Controller
      */
     public function store(Request $request)
     {
+	Gate::authorize("create", Standing::class);	
         $request->validate([
             'team_id'=> 'required|exists:teams,id',
         ]);
@@ -44,7 +47,7 @@ class StandingController extends Controller
      * Display the specified resource.
      */
     public function show(Standing $standing)
-    {
+    {	
         $standing->load('team');
 
         return view('standings.show', compact('standing'));
@@ -55,6 +58,7 @@ class StandingController extends Controller
      */
     public function edit(Standing $standing)
     {
+	Gate::authorize("update", $standing);	
         $teams = Team::all();
         $standing->load('team');
 
@@ -66,6 +70,7 @@ class StandingController extends Controller
      */
     public function update(Request $request, Standing $standing)
     {
+	Gate::authorize("update", $standing);	
         $validated = $request->validate([ 
             'team_id' => 'required|exists:teams,id',
         ]);
@@ -80,6 +85,7 @@ class StandingController extends Controller
      */
     public function destroy(Standing $standing)
     {
+	Gate::authorize("delete", $standing);	
         $standing->delete();
 
         return redirect()->route('standings.index')->with('success', 'Standing berhasil dihapus.');

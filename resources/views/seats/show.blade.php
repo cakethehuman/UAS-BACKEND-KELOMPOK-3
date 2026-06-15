@@ -27,14 +27,18 @@
                     </div>
                 </div>
                 <div class="flex flex-row items-center justify-center mx-5">
+		   @can("delete", $seat) 		
                     <form action="{{ route('seats.destroy', $seat) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class='bg-red-700 rounded-full w-70 h-5 text-white text-xs mx-2
                         flex items-center justify-center' type="submit">X</button>
                     </form> 
-                    <a class="bg-yellow-400 rounded-full w-70 h-5 text-white text-xs mx-2
-                        flex items-center justify-center" href="{{ route('seats.edit', $seat) }}">📝</a>
+		   @endcan	
+		   @can("update", $seat) 	
+			    <a class="bg-yellow-400 rounded-full w-70 h-5 text-white text-xs mx-2
+				flex items-center justify-center" href="{{ route('seats.edit', $seat) }}">📝</a>
+		   @endcan
                 </div>
             </div>
         </div>

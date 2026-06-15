@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Store;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Gate;
 class StoreController extends Controller
 {
     /**
@@ -23,6 +23,7 @@ class StoreController extends Controller
      */
     public function create()
     {
+	Gate::authorize('create',  Store::class); 
         return view("store.create");
     }
 
@@ -31,6 +32,7 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
+	Gate::authorize('create',  Store::class); 
         $request->validate([
             'name' => 'required|string',
             'category' => 'required|string', 
@@ -57,6 +59,7 @@ class StoreController extends Controller
      */
     public function edit(Store $store)
     {
+	Gate::authorize('update',  $store); 
         return view('store.edit', compact('store'));
     }
 
@@ -65,6 +68,7 @@ class StoreController extends Controller
      */
     public function update(Request $request, Store $store)
     {
+	Gate::authorize('update',  $store); 
          $request->validate([
             'name' => 'required|string',
             'category' => 'required|string', 
@@ -83,6 +87,7 @@ class StoreController extends Controller
      */
     public function destroy(Store $store)
     {
+	Gate::authorize('delete',  $store); 
         $store -> delete();
 
         return redirect()->route('store.index')->with('success', 'Product deleted.');
