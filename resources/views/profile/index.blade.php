@@ -26,13 +26,7 @@
                 <a href="{{ route('profile.edit') }}" 
                 class="w-full px-3 py-2 font-semibold text-center text-white transition duration-200 ease-in-out bg-yellow-400 rounded-lg hover:bg-yellow-500/90 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
                     Edit Profile
-                </a>
-                
-                <a href="{{ route('profile.create') }}" 
-                class="w-full px-3 py-2 font-semibold text-center text-white transition duration-200 ease-in-out bg-green-500 rounded-lg hover:bg-green-500/90 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-800">
-                    Add Another User
-                </a>
-                
+                </a>                
                 <a href="{{ route('profile.delete') }}" 
                 class="w-full px-3 py-2 font-semibold text-center text-white transition duration-200 ease-in-out bg-red-600 rounded-lg hover:bg-red-600/90 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-800">
                     Delete Account
