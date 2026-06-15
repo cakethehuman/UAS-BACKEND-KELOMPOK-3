@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->string('slug')->unique();
-            $table->string('title');
+            $table->string('title', 100);
             $table->text('content');
             $table->string('image')->nullable();
             $table->timestamps();
