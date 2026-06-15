@@ -42,11 +42,13 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-center items-center m-3">
-            <a class="text-white border border-2 
-            border-green-600 rounded-full 
-            h-7 px-5 bg-green-600" 
-            href="{{ route('games.seats.create', $game->id) }}"> + Buat Post Baru</a>
-        </div>
+	@can("create", $seat) 
+		<div class="flex justify-center items-center m-3">
+		    <a class="text-white border border-2 
+		    border-green-600 rounded-full 
+		    h-7 px-5 bg-green-600" 
+		    href="{{ route('games.seats.create', $game->id) }}"> + Buat Post Baru</a>
+		</div>
+	@endcan
     </div>
 @endsection

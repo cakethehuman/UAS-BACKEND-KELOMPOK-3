@@ -1,24 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="flex justify-center items-center">          
+    <div class="flex items-center justify-center">          
         <h1 class="text-white font-bold text-3xl w-70 h-15 py-2 text-center 
             border-2 bg-gray-800 border-mavs-navy rounded-full m-2 shadow-lg shadow-mavs-navy">
             News Articles
         </h1>
     </div>
-
-    @if(session('success'))
-        <p class="text-green-500 mb-4">{{ session('success') }}</p>
-    @endif
-
-    <div class="mb-6">
-	@can('create', App\Models\Team::class) <!-- terhubung dengan policy yang ada -->
-		<a class="text-white bg-blue-700 px-4 py-2 rounded-full text-sm font-semibold" href="{{ route('news.create') }}">Create New Article</a>
-	@endcan
-
-    </div>
-
+    @can("create", App\Models\Article::class)  
+	    <div class="flex items-center justify-center my-5">
+		<a class="flex text-white bg-blue-700 px-4 py-1 w-50 h-10 rounded-full font-semibold items-center justify-center" 
+		href="{{ route('news.create') }}"> + Add new Article</a>
+	    </div>
+    @endcan
     @if($articles->isEmpty())
         <p class="text-white">No news available.</p>
     @else
@@ -40,7 +34,7 @@
 			@endcan
 
 			                        
-                        {{-- Bug fix: no more JavaScrip confirm --}}
+            {{-- Bug fix: no more JavaScrip confirm --}}
 			@can('delete', $article)
 				<span class="text-gray-600">|</span>
 				<form action="{{ route('news.destroy', $article->slug) }}" method="POST" class="inline">

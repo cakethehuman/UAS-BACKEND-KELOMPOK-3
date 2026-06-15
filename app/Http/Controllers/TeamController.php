@@ -30,10 +30,8 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        // 100 dan 50 ini dipilih karena untuk minmize varcharnya biar lebih cepet dbnya
-        // 100 and 50 varchar values is selected so the database could be more efficent
-	// lanjutan dari create, maka harus diauthorize
-	Gate::authorize('create', Team::class);
+	    Gate::authorize('create', Team::class);
+    
         $request->validate([
             'name' => 'required|string|max:50',
             'city' => 'required|string|max:50',
@@ -63,9 +61,11 @@ class TeamController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Team $team)
-    {
+    {   
+        $conference = Team::CONFERENCE;
+        $devision = Team::DIVISIONS;
     	Gate::authorize('update', $team);
-        return view('teams.edit', compact('team'));
+        return view('teams.edit', compact('team','devision','conference'));
     }
 
     /**

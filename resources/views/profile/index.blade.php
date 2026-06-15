@@ -24,17 +24,11 @@
             </div>
             <div class="flex flex-row pt-4 space-x-3 border-gray-700 mx-2 my-1">
                 <a href="{{ route('profile.edit') }}" 
-                class="w-full px-3 py-2 font-semibold text-center text-white transition duration-200 ease-in-out bg-green-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                class="w-full px-3 py-2 font-semibold text-center text-white transition duration-200 ease-in-out bg-yellow-400 rounded-lg hover:bg-yellow-500/90 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-800">
                     Edit Profile
-                </a>
-                
-                <a href="{{ route('profile.create') }}" 
-                class="w-full px-3 py-2 font-semibold text-center text-white transition duration-200 ease-in-out bg-yellow-600 rounded-lg hover:bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-800">
-                    Add Another User
-                </a>
-                
+                </a>                
                 <a href="{{ route('profile.delete') }}" 
-                class="w-full px-3 py-2 font-semibold text-center text-white transition duration-200 ease-in-out bg-red-600 border border-red-500/50 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-800">
+                class="w-full px-3 py-2 font-semibold text-center text-white transition duration-200 ease-in-out bg-red-600 rounded-lg hover:bg-red-600/90 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-gray-800">
                     Delete Account
                 </a>
             </div>
