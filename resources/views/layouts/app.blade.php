@@ -85,10 +85,16 @@
         <main>
             <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
                 @yield('content')
+                @livewireScripts
+                <a class="fixed bottom-5 right-5 bg-blue-600 text-white 
+                        px-4 py-2 rounded-lg shadow-lg hover:bg-blue-700"
+                        href="{{ url('/chat') }}">
+                Help?
+                </a>
             </div>
         </main>
     </div>
-
 </body>
+
 
 </html>

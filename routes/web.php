@@ -16,6 +16,8 @@ use App\Http\Controllers\StandingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlayerController;
 
+use App\Http\Controllers\ChatWebController;
+
 Route::get('/', function () {
     return view('Home');
 });
@@ -58,15 +60,15 @@ Route::middleware('auth')->group(function (){
 	Route::patch('/profile/update-email', [UserController::class, 'updateEmail'])->name('profile.updateEmail');
 	Route::patch('/profile/update-password', [UserController::class, 'updatePw'])->name('profile.updatePass');
 
-  //Untuk menghapus account
+  	//Untuk menghapus account
 	Route::get('/profile/delete', [UserController::class, 'delete'])->name('profile.delete');
 	Route::delete('/profile/delete', [UserController::class, 'destroy'])->name('profile.destroy');
 	
 	Route::resource('profile', UserController::class);
     
-  // untuk store page
+  	// untuk store page
   	Route::resource('store', StoreController::class);
-
+	Route::resource('chat', ChatWebController::class);
 });
 
 
