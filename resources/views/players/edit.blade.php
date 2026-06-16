@@ -35,6 +35,12 @@
                         @endforeach
                     </select>
 
+                    <h1 class="text-white">Role</h1>
+                    <input name="role" 
+                    type="text"
+                    class = "border border-mavs-navy bg-white rounded-full pl-4" 
+                    value="{{ $player->role }}">
+
                     <h1 class="text-white">Height</h1>
                     <input name="height" 
                     type="text"

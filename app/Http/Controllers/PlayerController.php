@@ -103,6 +103,7 @@
                     'height' => 'required|string|max:50',
                     'weight' => 'required|string|max:50',
                     'age' => 'required|integer|min:1|max:100',
+                    'role' => 'required|string|max:50',
                     'country' => 'required|string|max:100',
                     'yearspro' => 'required|string|max:50',
                     'points' => 'required|integer|min:0|max:150', 
