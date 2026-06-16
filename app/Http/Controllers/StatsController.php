@@ -10,7 +10,7 @@ class StatsController extends Controller
     public function index(Request $request)
     {
         $player = Player::select([
-            'id', 'pfp', 'name', 'team', 'age', 'points', 'rebounds', 'assists',
+            'name', 'team', 'age', 'points', 'rebounds', 'assists',
             'blocks', 'steals', 'turnovers', 'threepoints', 'freethrows', 'fantasy'
         ])->get();
 
