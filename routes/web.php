@@ -68,6 +68,7 @@ Route::middleware('auth')->group(function (){
     
   	// untuk store page
   	Route::resource('store', StoreController::class);
+	Route::resource('chat', ChatWebController::class);
 });
 
 
