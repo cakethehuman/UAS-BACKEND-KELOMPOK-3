@@ -12,6 +12,11 @@
         <nav class="bg-gray-800/50">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
+                    <div class="flex items-center flex-shrink-0">
+                        <a href="{{ url('/') }}" c;ass="text-xl font-black tracking-wider uppercase hover:opacity-80 transition">
+                            <span class="text-red-600">NBA</span><span class="text-white ml-1">PROJECT</span>
+                        </a>
+                    </div>
                     <div class="flex items-center justify-center relative w-full">
 
                         <div class="hidden md:block">
