@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function (){
 	//Untuk players page
 	Route::resource('players', PlayerController::class)->middleware('auth');
 
-	// Player stats page
+	//Untuk player's stats page
 	Route::get('/stats', [StatsController::class, 'index'])->name('stats.index');
 	Route::resource('standings', StandingController::class)->middleware('auth');
   
