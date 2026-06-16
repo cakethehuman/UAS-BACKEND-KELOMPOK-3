@@ -46,7 +46,7 @@
 
                                 <div class="flex items-center gap-2 px-4 py-3 bg-gray-100 border-t border-gray-300 justify-center">
                                     
-                                    <a class="'bg-blue-500 rounded-full w-7 h-5 text-white text-xs flex items-center justify-center hover:bg-blue-600"
+                                    <a class="bg-blue-500 rounded-full w-7 h-5 text-white text-xs flex items-center justify-center hover:bg-blue-600"
                                         href="{{ route('store.show', $item->id) }}" title="View Product Detail">
                                         🔍
                                     </a>
