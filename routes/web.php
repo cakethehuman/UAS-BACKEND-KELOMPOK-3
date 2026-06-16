@@ -15,6 +15,7 @@ use App\Http\Controllers\StandingController;
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlayerController;
+use App\Http\Controllers\StatsController;
 
 Route::get('/', function () {
     return view('Home');
@@ -38,6 +39,9 @@ Route::middleware('auth')->group(function (){
 
 	//Untuk players page
 	Route::resource('players', PlayerController::class)->middleware('auth');
+
+	// Player stats page
+	Route::get('/stats', [StatsController::class, 'index'])->name('stats.index');
 	Route::resource('standings', StandingController::class)->middleware('auth');
   
 	// Games

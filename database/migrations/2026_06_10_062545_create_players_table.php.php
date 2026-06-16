@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('height', 30);
             $table->string('weight',30);
             $table->integer('age');
+            $table->string('role', 30);
             $table->string('country', 50);
             $table->string('yearspro', 10);
             $table->integer('points');

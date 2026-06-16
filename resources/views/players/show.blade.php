@@ -13,6 +13,7 @@
         <h1 class="text-white">Player Id : {{ $player->id }}</h1>
         <h1 class="text-white">Name: {{ $player->name }}</h1>
         <h1 class="text-white">Team: {{ $player->team }}</h1>
+        <h1 class="text-white">Role: {{ $player->role }}</h1>
         <h1 class="text-white">Age: {{ $player->age }}</h1>
         <h1 class="text-white">Height: {{ $player->height }}</h1>
         <h1 class="text-white">Weight: {{ $player->weight }}</h1>

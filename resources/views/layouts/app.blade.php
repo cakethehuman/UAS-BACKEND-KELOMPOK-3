@@ -29,6 +29,10 @@
                                         font-medium text-gray-300 hover:bg-mavs-navy/70
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Players</a>
+                                    <a href="{{ url('/stats') }}" aria-current="page" class="px-3 py-2 text-sm
+                                        font-medium text-gray-300 hover:bg-mavs-navy/70
+                                        hover:text-white border-2 border-mavs-navy
+                                        rounded-full transition duration-300">Stats</a>
                                     <a href="{{ url('/games') }}" aria-current="page" class="px-3 py-2 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
@@ -83,7 +87,7 @@
         </nav>
 
         <main>
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-8xl px-4 py-6 sm:px-6 lg:px-8">
                 @yield('content')
             </div>
         </main>
