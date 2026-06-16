@@ -31,6 +31,11 @@
                             @endforeach
                         </select>
 
+                        <h1 class="text-white">Role</h1>
+                        <input 
+                        class='border border-mavs-navy bg-white rounded-full pl-4' 
+                        name="role" type="text" required>
+
                         <h1 class="text-white">Height</h1>
                         <input 
                         class='border border-mavs-navy bg-white rounded-full pl-4' 

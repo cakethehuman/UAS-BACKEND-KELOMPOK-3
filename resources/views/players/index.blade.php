@@ -15,28 +15,29 @@
                 <table class="min-w-full border-collapse text-sm text-left text-slate-200">
                     <thead>
                         <tr class="bg-gray-800 border-b border-mavs-navy text-white">
-                            <th class="px-4 y-3">Photo</th>
-                            <th class="px-4 py-3">Name</th>
-                            <th class="px-4 py-3">Team</th>
-                            <th class="px-4 py-3">Height</th>
-                            <th class="px-4 py-3">Weight</th>
-                            <th class="px-4 py-3">Country</th>
-                            <th class="px-4 py-3">Action</th>
+                            <th class="px-4 py-3 text-center">Name</th>
+                            <th class="px-4 py-3 text-center">Team</th>
+                            <th class="px-4 py-3 text-center">Height</th>
+                            <th class="px-4 py-3 text-center">Weight</th>
+                            <th class="px-4 py-3 text-center">Country</th>
+                            <th class="px-4 py-3 text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($player as $players)
                             <tr class="border-b border-slate-700 hover:bg-slate-800">
-                                <td class="px-4 py-4">
-                                    <img src="{{ asset($players->pfp) }}" alt="{{ $players->name }}" class="w-16 h-16 rounded-full object-cover">
+                                <td class="px-4 py-4 text-center">
+                                    <div class="flex gap-3 justify-center items-center">
+                                    <img src="{{ asset($players->pfp) }}" alt="{{ $players->name }}" class="w-16 h-16 rounded-full object-cover">   
+                                    {{ $players->name }}</div>
+                                    
                                 </td>
-                                <td class="px-4 py-4">{{ $players->name }}</td>
-                                <td class="px-4 py-4">{{ $players->team }}</td>
-                                <td class="px-4 py-4">{{ $players->height }}</td>
-                                <td class="px-4 py-4">{{ $players->weight }}</td>
-                                <td class="px-4 py-4">{{ $players->country }}</td>
-                                <td class="px-4 py-4">
-                                    <div class="flex flex-wrap gap-2">
+                                <td class="px-4 py-4 text-center">{{ $players->team }}</td>
+                                <td class="px-4 py-4 text-center">{{ $players->height }}</td>
+                                <td class="px-4 py-4 text-center">{{ $players->weight }}</td>
+                                <td class="px-4 py-4 text-center">{{ $players->country }}</td>
+                                <td class="px-4 py-4 text-center">
+                                    <div class="flex flex-wrap gap-2 items-center justify-center">
                                         <a class="bg-blue-700 rounded-full w-8 h-8 text-white text-xs flex items-center justify-center" href="{{ route('players.show', $players) }}">🔍</a>
 					@can("update", $players)
 						<a class="bg-yellow-500 rounded-full w-8 h-8 text-white text-xs flex items-center justify-center" href="{{ route('players.edit', $players) }}">📝</a>
