@@ -38,21 +38,6 @@ class AuthController extends Controller
 		return view('Home');
 	}
 
-	public function registerForDebugging(Request $request)
-	{	
-		// memvalidasi input untuk register		
-		$validated = $request->validate([
-			// Validasi akan dilakukan otomatis oleh laravel dengan syntax yang ada dibawah ini
-			'name' => 'required|string|max:255',
-			'email' => 'required|email|unique:users',	
-			'password' => 'required|string|min:8|confirmed' // confirmed bisa bekerja dengan cara melihat sebuah entry password yang kedua kali dengan name="password_confirmation"
-		]);		
-		// membuat user baru setelah tervalidasi
-		$user = User::create($validated);
-
-		return view('Home');
-	}
-
 	public function login(Request $request)
 	{
 		$validated = $request->validate([

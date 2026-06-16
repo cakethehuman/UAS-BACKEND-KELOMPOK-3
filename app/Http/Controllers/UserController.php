@@ -77,12 +77,6 @@
             return redirect()->route('profile.index')->with('success','User password successfully updated');
         }
 
-        public function create()
-        {
-            
-            return view('auth.register');
-        }
-
         public function delete(){
             return view('profile.delete');
         }
