@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('players', function (Blueprint $table){
             $table->id();
             $table->string('pfp')->nullable();
-            $table->string('name');
-            $table->string('team');
-            $table->string('height');
-            $table->string('weight');
+            $table->string('name', 50);
+            $table->string('team', 50);
+            $table->string('height', 30);
+            $table->string('weight',30);
             $table->integer('age');
-            $table->string('country');
-            $table->string('yearspro');
+            $table->string('country', 50);
+            $table->string('yearspro', 10);
             $table->integer('points');
             $table->integer('rebounds');
             $table->integer('assists');

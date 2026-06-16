@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             // Basicly ini untuk nama table    
-            $table->string('name', 50);          
+            $table->string('name',50);          
             $table->string('city', 50);          
             $table->string('abbreviation', 10);  
 
