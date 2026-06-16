@@ -16,12 +16,11 @@ use App\Http\Controllers\StandingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\StatsController;
+use App\Http\Controllers\TicketController;
 
 use App\Http\Controllers\ChatWebController;
 
-Route::get('/', function () {
-    return view('Home');
-});
+Route::view('/', 'Home');
 
 // Untuk register
 Route::middleware('guest')->controller(AuthController::class)->group(function (){
@@ -73,6 +72,20 @@ Route::middleware('auth')->group(function (){
   	// untuk store page
   	Route::resource('store', StoreController::class);
 	Route::resource('chat', ChatWebController::class);
+	
+	// untuk tickets page	
+	// ini adalah versi repot
+	//Route::get('/tickets', [TicketController::class, 'index']);
+	//Route::get('/tickets/create', [TicketController::class, 'create']);
+	//Route::get('/tickets/{id}', [TicketController::class, 'show']);
+	//Route::post('/tickets', [TicketController::class, 'store']);
+	//Route::get('/tickets/{id}/edit', [TicketController::class, 'edit']);
+	//Route::put('/tickets/{id}', [TicketController::class, 'update']);
+	//Route::delete('/tickets/{id}', [TicketController::class, 'destroy']);
+
+	// ini lebih ringkas
+	Route::resource('/tickets', TicketController::class);
+
 });
 
 

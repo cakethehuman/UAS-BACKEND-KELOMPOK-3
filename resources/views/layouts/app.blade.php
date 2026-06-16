@@ -49,7 +49,8 @@
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Standing</a>
-                                @endauth
+				    
+				@endauth
                                 <!-- Konten yang diwrap oleh directive guest hanya ditampilkan oleh user yang belum login atau belum terautentikasi -->
                                 @guest
                                     <a href="{{ route('show.login') }}" aria-current="page" class="px-3 py-2 text-sm 
@@ -67,6 +68,11 @@
                                                 font-medium text-gray-300 hover:bg-mavs-navy/70 
                                                 hover:text-white border-2 border-mavs-navy
                                                 rounded-full transition duration-300">Store</a>
+					    <a href="{{ url('/tickets') }}" aria-current="page" class="px-3 py-2 text-sm 
+	                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
+	                                        hover:text-white border-2 border-mavs-navy
+	                                        rounded-full transition duration-300">Tickets</a>	
+	
                                             <span class="border-r-2 pr-2 text-cyan-500">
                                                 Hi there, {{ Auth::user()->name }}
                                             </span>
