@@ -54,6 +54,10 @@
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Standing</a>
+                                    <a href="{{ url('/watch') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
+                                        hover:text-white border-2 border-mavs-navy
+                                        rounded-full transition duration-300">Watch</a>
                                 @endauth
                                 <!-- Konten yang diwrap oleh directive guest hanya ditampilkan oleh user yang belum login atau belum terautentikasi -->
                                 @guest
