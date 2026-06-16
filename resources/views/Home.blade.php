@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="flex items-center justify-center min-h-[calc(100vh-100px)] py-12 px-4 sm:px-6 lg:px-8">
-    <div class="w-full max-w-lg p-8 space-y-6 bg-gray-800 border-2 border-mavs-navy rounded-xl shadow-lg shadow-mavs-navy/50">
+<div class="flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div class="w-lg p-7 space-y-6 bg-gray-800 border-2 border-mavs-navy rounded-xl shadow-lg shadow-mavs-navy/50">
         
         <div class="text-center border-gray-700">
             <h1 class="text-3xl font-bold text-blue-400">
@@ -40,7 +40,9 @@
                 <span class="text-sm font-mono text-blue-400">535250044</span>
             </li>
         </ul>
-
     </div>
 </div>
+<section>
+    <livewire:counter />
+</section>
 @endsection
