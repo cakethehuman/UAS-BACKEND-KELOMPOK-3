@@ -28,46 +28,43 @@
 
                 <div class="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                        <label class="block text-gray-400 mb-2 text-sm" for="name">Product Name (LOCKED)</label>
-                        <input type="text" name="name" id="name" value="{{ $store->name }}" readonly
-                            class="w-full px-4 py-2 rounded-full bg-gray-700 text-gray-400 cursor-not-allowed focus:outline-none">
+                        <label class="block text-gray-400 mb-2 text-sm" for="name">Product Name</label>
+                        <input type="text" name="name" id="name" value="{{ $store->name }}" 
+                            class="w-full px-4 py-2 rounded-full bg-gray-700 text-gray-400 focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-gray-400 mb-2 text-sm" for="category">Category (LOCKED)</label>
-                        <input type="text" name="category" id="category" value="{{ $store->cateogry }}" readonly
-                            class="w-full px-4 py-2 rounded-full bg-gray-700 text-gray-400 cursor-not-allowed focus:outline-none">
+                        <label class="block text-gray-400 mb-2 text-sm" for="category">Category</label>
+                        <input type="text" name="category" id="category" value="{{ $store->category }}" 
+                            class="w-full px-4 py-2 rounded-full bg-gray-700 text-gray-400 focus:outline-none">
                     </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                        <label class="block text-gray-400 mb-2 text-sm" for="type">Edition / Type (LOCKED)</label>
-                        <input type="text" name="type" id="type" value="{{ $store->type }}" readonly
-                            class="w-full px-4 py-2 rounded-full bg-gray-700 text-gray-400 cursor-not-allowed focus:outline-none">
+                        <label class="block text-gray-400 mb-2 text-sm" for="type">Edition</label>
+                        <input type="text" name="type" id="type" value="{{ $store->type }}"
+                            class="w-full px-4 py-2 rounded-full bg-gray-700 text-gray-400 focus:outline-none">
                     </div>
                     <div>
-                        <label class="block text-gray-400 mb-2 text-sm" for="image">Image URL (LOCKED)</label>
-                        <input type="text" name="image" id="image" value="{{ $store->image }}" readonly
-                            class="w-full px-4 py-2 rounded-full bg-gray-700 text-gray-400 cursor-not-allowed focus:outline-none">
+                        <label class="block text-gray-400 mb-2 text-sm" for="image">Image URL</label>
+                        <input type="text" name="image" id="image" value="{{ $store->image }}" 
+                            class="w-full px-4 py-2 rounded-full bg-gray-700 text-gray-400 focus:outline-none">
                     </div>
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-400 mb-2 text-sm" for="store_link">Shopping Link (LOCKED)</label>
-                    <input type="text" name="store_link" id="store_link" value="{{ $store->store_link }}" readonly
-                        class="w-full px-4 py-2 rounded-full bg-gray-700 text-gray-400 cursor-not-allowed focus:outline-none">
+                    <label class="block text-gray-400 mb-2 text-sm" for="store_link">Shopping Link</label>
+                    <input type="text" name="store_link" id="store_link" value="{{ $store->store_link }}"
+                        class="w-full px-4 py-2 rounded-full bg-gray-700 text-gray-400 focus:outline-none">
                 </div>
                 <hr class="border-blue-900 my-6">
 
                 <div class="mb-4">
-                    <label class="block text-white mb-2 text-sm font-bold" for="price">Price (Rp)<span
-                            class="text-yellow-400 font-normal text-xs ml-2">*Price changes will be reviewed by
-                            Admin</span></label>
+                    <label class="block text-white mb-2 text-sm font-bold" for="price">Price (Rp)</label>
                     <input type="number" name="price" id="price" value="{{ $store->price }}" required
                         class="w-full px-4 py-2 rounded-full bg-white text-black focus:outline-none focus:ring-2 focus:ring-yellow-500 border-2 border-yellow-500">
                 </div>
 
                 <div class="mb-6">
-                    <label class="block text-white mb-2 text-sm font-bold" for="description">Description<span
-                            class="text-green-400 font-normal text-xs ml-2">*Free to edit</span></label>
+                    <label class="block text-white mb-2 text-sm font-bold" for="description">Description</label>
                     <textarea name="description" id="description" rows="4"
                         class="w-full px-4 py-3 rounded-2xl bg-white text-black focus:outline-none focus:ring-2 focus:ring-green-500 border-2 border-green-500">{{ $store->description }}</textarea>
                 </div>
