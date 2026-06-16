@@ -31,8 +31,8 @@
                             <div class="bg-slate-50 border border-3 border-mavs-navy rounded-xl flex flex-col overflow-hidden">
 
                                 <div class="h-48 bg-gray-200 flex justify-center items-center p-2">
-                                    <a href="{{$item->store_link }}" target="_blank">
-                                        <img src="{{$item->image}}" alt="{{$item->name}}" class="max-h-full object-contain">
+                                    <a href="{{ route('store.show', $item->id) }}">
+                                        <img src="{{$item->image}}" alt="{{$item->name}}" class="max-h-full object-contain hover:scale-105 transition">
                                     </a>
                                 </div>
 
@@ -45,6 +45,11 @@
                                 </div>
 
                                 <div class="flex items-center gap-2 px-4 py-3 bg-gray-100 border-t border-gray-300 justify-center">
+                                    
+                                    <a class="bg-blue-500 rounded-full w-7 h-5 text-white text-xs flex items-center justify-center hover:bg-blue-600"
+                                        href="{{ route('store.show', $item->id) }}" title="View Product Detail">
+                                        🔍
+                                    </a>
 
                                     <a class="bg-orange-500 rounded-full w-7 h-5 text-white text-xs flex items-center justify-center hover:bg-orange-600"
                                         href="{{$item->store_link}}" target="_blank" title="Buy Here">
