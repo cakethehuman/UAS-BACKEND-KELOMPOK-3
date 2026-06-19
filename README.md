@@ -18,17 +18,46 @@ Anggota kelompok <br>
 535250043 - Nicholas Tannaydi <br>
 535250044 - Felix Lin <br>
 
-# Basic Guide how to make tailwind appear
+# How to Run Our Project
 
-First run npm run dev
-then php artisan serve
+## 1. Install Dependencies
 
-# Seeder
-make sure to seed the database
+```bash
+1. composer install
+2. npm install
+```
 
-php artisan db:seed
+## 2. Configure Environment
 
-admin access account :
-        Username    : Admin User
+```bash
+1. php artisan key:generate
+```
+
+## 3. Run Database Migration & Seeder
+
+```bash
+1. php artisan migrate:fresh --seed
+```
+
+## 4. Start the Development Servers
+
+Open two terminals.
+
+**Terminal 1**
+```bash
+npm run dev
+```
+
+**Terminal 2**
+```bash
+php artisan serve
+```
+
+# Admin account
+```
+admin access account : 
+        Username    : Admin User 
         Email       : admin@example.com
         Password    : 12345678910
+
+```
