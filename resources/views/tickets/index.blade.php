@@ -6,46 +6,46 @@
             border-2 bg-gray-800 border-mavs-navy rounded-full m-2 shadow-lg shadow-mavs-navy">
             Tickets 
         </h1>	
-    </div>
+    </div> 
 
-    <div class="flex items-center justify-center m-5">
-	   
-	   <a href="{{ route('tickets.create') }}" 
-		   class="flex items-center justify-center bg-amber-500 rounded-3xl w-56 h-12 
-		          text-blue-950 text-shadow-white-500 font-bold text-lg 
-			  transition-all duration-300 ease-in-out 
-			  hover:bg-blue-950 hover:text-white hover:scale-[1.07] 
-			  dark:bg-blue-950 dark:text-amber-400 dark:hover:bg-amber-500 dark:hover:text-blue-950" >
-		   <span>+ Create new ticket</span>
-	   </a>	
-	   
-    </div>	
+    <div class="flex flex-col items-center justify-center p-2 gap-20"> 
+	    <h2 class="text-white font-bold text-2xl w-3xl h-15 text-center 
+			border-2 bg-gray-800 border-mavs-navy rounded-full 
+			shadow-lg shadow-mavs-navy py-2 m-1 
+			"
 
-   
-    <div class="flex item-center justify-center p-2"> 
-	    @if (!$data)
-		 <h3 class="text-white font-bold text-2xl p-4">Tidak ada tiket.</h3> 	 	 
-	    @else
-	   	<div class="flex flex-col items-center justify-center">
-	    	  @foreach ($games as $game)
-	    	  	<span class="flex flex-col text-white font-bold text-2xl text-center p-1 m-8 w-30 h-12 bg-gray-800 border-mavs-navy rounded-full shadow-lg shadow-mavs-navy">
-				Game {{ $game->id }} 	
-		  	</span>	
-			<div class="grid grid-cols-10 gap-1 p-4 items-center justify-center">
-				@foreach ($game->seats as $seat)
-					@if ($seat->seat_availability !== 'Available')
-						<div class="flex items-center justify-center text-white font-bold border-3 py-3 border-red-600 w-10 h-10">{{ $seat->seat_number }}</div>	
-					@else
-						<div class="flex items-center justify-center text-white font-bold border-3 py-3 border-mavs-navy w-10 h-10 hover:border-blue-700">{{ $seat->seat_number }}</div>	
-					@endif
+		    >Choose your game
+	    </h2>		
+	    <div class="flex flex-row items-center justify-center p-6 border-2 border-mavs-navy bg-gray-800 w-4xl min-h-48 text-white font-bold rounded-4xl shadow-lg shadow-gray-700 gap-4">
+		    @if (!$teams)
+			    <h1 class="text-white font-bold text-2xl"> 
+				    Sorry, no team available, please add the teams first! 
+			    </h1> 
+		    @else	
+			<form method="POST" action="" class="flex flex-col items-center justify-center"> 
+				@csrf
+				<div class="flex items-center justify-center gap-6 mt-5">
+					
+					<label for="months">Choose the month:</label>	
+					<select name="months" class="border border-gray-700 bg-mavs-navy rounded-3xl w-32 px-3 py-1 text-center layout-fix">
+						@foreach ($months as $month)
+							<option value="{{ $month }}">{{ $month }}</option> 
+						@endforeach 
+					</select>
 						
-			 	@endforeach		
-			</div>
-			 
-
-	    	  @endforeach
-		</div> 
-	    @endif   
+					<label for="teams">Choose a team:</label>
+					<select name="game" class="border border-gray-700 bg-mavs-navy rounded-3xl w-64 px-3 py-1 text-center"> 
+						@foreach ($teams as $team)
+		    				   <option value="{{ $team->name }}">{{ $team->name }}</option> 
+		    		  		@endforeach 
+		   			</select>
+				</div>	 
+						
+				<input type="submit" value="Find your ticket!" class="flex bg-blue-900 hover:bg-blue-800 text-white font-bold rounded-full transition-all w-48 h-10 mt-2 shadow-md">
+			</form> 
+		    @endif 
+	    </div> 
+	     
     </div>       
     
 

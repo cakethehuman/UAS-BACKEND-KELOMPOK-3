@@ -75,7 +75,7 @@
                                 <!-- auth directive digunakan untuk memastikan bahwa konten yang terbungkus dengan directive itu baru akan muncul jika user telah login -->
                                 @auth
 					    <a href="{{ url('/watch') }}" aria-current="page" class="px-3 py-2 text-sm 
-                                          	font-medium text-gray-298 hover:bg-mavs-navy/70 
+                                          	font-medium text-gray-300 hover:bg-mavs-navy/70 
                                           	hover:text-white border-2 border-mavs-navy
                                           	rounded-full transition duration-300">Watch</a>		
                                             <a href="{{ url('/store') }}" aria-current="page" class="px-3 py-2 text-sm 
