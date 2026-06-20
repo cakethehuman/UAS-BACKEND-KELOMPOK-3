@@ -26,13 +26,25 @@
 	    @if (!$data)
 		 <h3 class="text-white font-bold text-2xl p-4">Tidak ada tiket.</h3> 	 	 
 	    @else
-	   	<ul class="flex flex-col items-center justify-center">
-	    	  @foreach ($data as $item)
-	    	  	<li class="text-white font-bold text-2xl text-center p-1 m-2 w-30 h-12 bg-gray-800 border-mavs-navy rounded-full shadow-lg shadow-mavs-navy">
-	    	  		{{ $item }}
-		  	</li>	
+	   	<div class="flex flex-col items-center justify-center">
+	    	  @foreach ($games as $game)
+	    	  	<span class="flex flex-col text-white font-bold text-2xl text-center p-1 m-8 w-30 h-12 bg-gray-800 border-mavs-navy rounded-full shadow-lg shadow-mavs-navy">
+				Game {{ $game->id }} 	
+		  	</span>	
+			<div class="grid grid-cols-10 gap-1 p-4 items-center justify-center">
+				@foreach ($game->seats as $seat)
+					@if ($seat->seat_availability !== 'Available')
+						<div class="flex items-center justify-center text-white font-bold border-3 py-3 border-red-600 w-10 h-10">{{ $seat->seat_number }}</div>	
+					@else
+						<div class="flex items-center justify-center text-white font-bold border-3 py-3 border-mavs-navy w-10 h-10 hover:border-blue-700">{{ $seat->seat_number }}</div>	
+					@endif
+						
+			 	@endforeach		
+			</div>
+			 
+
 	    	  @endforeach
-		</ul> 
+		</div> 
 	    @endif   
     </div>       
     

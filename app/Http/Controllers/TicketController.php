@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Game;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 
@@ -12,13 +13,9 @@ class TicketController extends Controller
      */
     public function index()
     {	
-	    $dummy = [
-		    "tiket1", 
-	  	    "tiket2",
-		    "tiket3"   
-	    ];
-	    
-       return view('tickets.index', ['data' => $dummy]); 
+       $tickets = Ticket::all(); 	    		    
+       $games = Game::with('seats.tickets')->get();
+       return view('tickets.index', ['data' => $tickets, 'games' => $games]); 
     }
 
     /**
@@ -34,7 +31,9 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
-        //
+	   // Ticket::create([
+	   // 	
+	   // ]); 
     }
 
     /**

@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
-	    $table->foreignId('user_id')->constrained();
-	    $table->foreignId('game_id')->constrained();
+	    $table->foreignId('user_id')->nullable()->constrained(); 
 	    $table->foreignId('seat_id')->constrained();
 	    $table->boolean('is_booked')->default(false);
             $table->timestamps();
+	    $table->unique(['user_id', 'seat_id']);
         });
     }
 

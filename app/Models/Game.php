@@ -20,25 +20,33 @@ class Game extends Model
         return $this->hasMany(Seat::class);
     }
 
+    public function tickets()
+    {
+    	return $this->hasMany(Ticket::class);
+    }
+    
     protected static function booted()
     {
-        static::created(function (Game $game) {
-            $seats = [];
+        static::created(function (Game $game) { 
             $rows = ['A', 'B', 'C', 'D', 'E']; 
-
+	    $seats = [];
             foreach ($rows as $row) {
                 for ($col = 1; $col <= 10; $col++) { 
-                    $seats[] = [
-                        'game_id'           => $game->id,
-                        'seat_number'       => $row . $col, 
-                        'seat_price'        => 50.00,
-                        'seat_availability' => 'Available',
-                        'created_at'        => now(),
-                        'updated_at'        => now(),
-                    ];
+			$seats[] = Seat::create([
+                            'game_id'           => $game->id,
+                            'seat_number'       => $row . $col, 
+                            'seat_price'        => 50.00,
+                            'seat_availability' => 'Available', 
+                        ]);
                 }
             }
-            Seat::insert($seats); 
+	    foreach ($seats as $seat){
+		    Ticket::create([
+			    'user_id' => null,
+			    'seat_id' => $seat->id 
+		    ]);
+	    }
+	     
     });
     }
 }

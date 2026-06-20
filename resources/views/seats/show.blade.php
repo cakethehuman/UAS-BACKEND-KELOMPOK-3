@@ -31,14 +31,17 @@
                     <form action="{{ route('seats.destroy', $seat) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button class='bg-red-700 rounded-full w-70 h-5 text-white text-xs mx-2
+                        <button class='bg-red-700 rounded-full w-48 h-5 text-white text-xs mx-2
                         flex items-center justify-center' type="submit">X</button>
                     </form> 
 		   @endcan	
 		   @can("update", $seat) 	
-			    <a class="bg-yellow-400 rounded-full w-70 h-5 text-white text-xs mx-2
+			    <a class="bg-yellow-400 rounded-full w-48 h-5 text-white text-xs mx-2
 				flex items-center justify-center" href="{{ route('seats.edit', $seat) }}">📝</a>
 		   @endcan
+		   <a class="bg-white rounded-full w-48 h-5 text-white text-xs mx-2
+				flex items-center justify-center" href="{{ route('games.show', $game) }}">⬅️</a>
+
                 </div>
             </div>
         </div>
