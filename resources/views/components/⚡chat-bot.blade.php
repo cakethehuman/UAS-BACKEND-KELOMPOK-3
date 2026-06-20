@@ -40,9 +40,11 @@ new class extends Component
         ]);
 
         $response = match ($option) {
-            '1'     => 'Go to games',
-            '2'     => 'Someone IG',
-            default => 'I did not understand that choice.',
+            '1'     => 'Go to the game page on the navigation bar then click on it',
+            '2'     => 'Not Done waiting till tickers',
+            '3'     => 'Go to Store then you can buy Items there',
+            '4'     => 'Kelompok 3',
+            default => 'Error!',
         };
 
         ChatMessage::create([
@@ -60,7 +62,7 @@ new class extends Component
         ChatMessage::create([
             'chat_id' => $this->chatId,
             'sender'  => 'CS',
-            'message' => 'Chat cleared',
+            'message' => 'Hello! user, need any help?',
         ]);
         $this->loadMessages();
     }
@@ -71,7 +73,7 @@ new class extends Component
         <div class="flex-1 overflow-y-auto p-4 space-y-3" id="chat-box">
             @foreach($messages as $msg)
                 <div class="flex {{ $msg['sender'] === 'user' ? 'justify-end' : 'justify-start' }}">
-                    <div class="w-[50%] px-4 py-2 rounded-lg text-sm
+                    <div class="w-[40%] px-4 py-2 rounded-lg text-sm
                         {{ $msg['sender'] === 'user' ? 'bg-blue-500 text-white' : 'bg-gray-600 text-white' }}">
                         {{ $msg['message'] }}
                     </div>
@@ -83,17 +85,27 @@ new class extends Component
             <div class="flex justify-center items-center">
                 <h1 class="text-white"> OPTIONS</h1>
             </div>
-            <button wire:click="sendMessage('1', 'How to view games?')"
-                class="w-full bg-gray-900 hover:bg-gray-700 text-white py-2 px-4 rounded-lg text-sm font-medium">
-                1. How to view games
-            </button>
-            <button wire:click="sendMessage('2','Who made this?')"
-                class="w-full bg-gray-900 hover:bg-gray-700 text-white py-2 px-4 rounded-lg text-sm font-medium">
-                2. Who made this
-            </button>
+            <div class="grid grid-cols-2 gap-2">
+                <button wire:click="sendMessage('1', 'How to view games?')"
+                    class="w-full bg-gray-900 hover:bg-gray-700 text-white py-2 px-4 rounded-lg text-sm font-medium">
+                    1. How to view games?
+                </button>
+                <button wire:click="sendMessage('2','How to buy tickets?')"
+                    class="w-full bg-gray-900 hover:bg-gray-700 text-white py-2 px-4 rounded-lg text-sm font-medium">
+                    2. How to buy tickets?
+                </button>
+                <button wire:click="sendMessage('3','How to buy NBA merch?')"
+                    class="w-full bg-gray-900 hover:bg-gray-700 text-white py-2 px-4 rounded-lg text-sm font-medium">
+                    3. How to buy NBA merch?
+                </button>
+                <button wire:click="sendMessage('4','Who Made This Awsome Site?')"
+                    class="w-full bg-gray-900 hover:bg-gray-700 text-white py-2 px-4 rounded-lg text-sm font-medium">
+                    4. Who Made This Awsome Site?
+                </button>
+            </div>
             <button wire:click="clearChat"
-                class="w-full text-white hover:bg-red-500 text-xs bg-red-600 rounded-lg">
-                Clear Chat
+                    class="w-full text-white hover:bg-red-500 text-xs bg-red-600 rounded-lg">
+                    Clear Chat
             </button>
         </div>
     </div>

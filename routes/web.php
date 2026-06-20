@@ -19,6 +19,7 @@ use App\Http\Controllers\StatsController;
 use App\Http\Controllers\TicketController;
 
 use App\Http\Controllers\ChatWebController;
+use App\Http\Controllers\WatchController;
 
 Route::view('/', 'Home');
 
@@ -57,6 +58,9 @@ Route::middleware('auth')->group(function (){
   	//Untuk store page
   	Route::resource('store', StoreController::class);
 
+	//Untuk watch page
+	Route::get('/watch', [WatchController::class, 'index'])->name('watch.index');
+	Route::get('/watch/{id}', [WatchController::class, 'show'])->name('watch.show');
 	//Untuk mengedit profile 
 	Route::get('/profile/edit', [UserController::class, 'edit'])->name('profile.edit');
 	Route::patch('/profile/update-name', [UserController::class, 'updateName'])->name('profile.updateName');
@@ -68,9 +72,7 @@ Route::middleware('auth')->group(function (){
 	Route::delete('/profile/delete', [UserController::class, 'destroy'])->name('profile.destroy');
 	
 	Route::resource('profile', UserController::class);
-    
-  	// untuk store page
-  	Route::resource('store', StoreController::class);
+
 	Route::resource('chat', ChatWebController::class);
 	
 	// untuk tickets page	
