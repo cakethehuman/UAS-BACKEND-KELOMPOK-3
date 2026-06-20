@@ -42,7 +42,7 @@ class WatchController extends Controller
             foreach($searchResults as $item){
                 $videos[] = [
                     'video_id'=> $item['id']['videoId'],
-                    'title'=> $item['snippet']['title'],
+                    'title'=> html_entity_decode($item['snippet']['title']),
                     'thumbnail'=> $item['snippet']['thumbnails']['high']['url'],
                     'youtube_url'=> 'https://www.youtube.com/watch?v=' . $item['id']['videoId'],
                     'is_live' => $item['snippet']['liveBroadcastContent'] === 'live'
