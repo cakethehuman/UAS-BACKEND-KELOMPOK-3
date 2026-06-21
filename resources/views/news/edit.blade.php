@@ -36,6 +36,22 @@
                 <textarea name="content" rows="5" class="text-white bg-slate-900 border border-mavs-navy rounded p-2 w-full focus:outline-none" required>{{ $article->content }}</textarea>
             </div>
 
+            @if($tags->isNotEmpty())
+                <div class="mb-4">
+                    <label class="block mb-2 font-medium text-white">Tags:</label>
+                    <div class="flex flex-wrap gap-3">
+                        @foreach($tags as $tag)
+                            <label class="flex items-center gap-1 text-sm text-gray-300 cursor-pointer">
+                                <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                                    {{ $article->tags->contains($tag->id) ? 'checked' : '' }}
+                                    class="accent-blue-500">
+                                {{ $tag->name }}
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+            @endif
+                       
             <button type="submit" class="bg-yellow-500 text-slate-950 px-5 py-2 rounded-full text-sm font-semibold">Update</button>
         </form>
     </div>
