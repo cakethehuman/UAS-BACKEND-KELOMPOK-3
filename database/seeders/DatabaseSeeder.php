@@ -21,10 +21,11 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
          User::factory()->create([
-             'name' => 'Admin User',
-             'email' => 'admin@example.com',
-	        'is_admin' => true,
-	        'password' => '12345678910',
+             'name' 	=> 'Admin User',
+             'email' 	=> 'admin@example.com',
+	     'is_admin' => true,
+	     'password' => '12345678910',
+	     'credits'  => 400000.45
          ]);
 
         // insert team info
