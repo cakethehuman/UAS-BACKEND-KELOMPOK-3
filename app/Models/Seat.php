@@ -11,7 +11,7 @@ class Seat extends Model
     public function gameInfo(){
         return $this->belongsTo(Game::class, 'game_id');
     }
-    public function tickets()
+    public function ticket()
     {
     	return $this->hasOne(Ticket::class);
     }

@@ -86,7 +86,15 @@ Route::middleware('auth')->group(function (){
 	//Route::delete('/tickets/{id}', [TicketController::class, 'destroy']);
 
 	// ini lebih ringkas
-	Route::resource('/tickets', TicketController::class);
+	
+	Route::controller(TicketController::class)->group(function () {
+		Route::post('/tickets/found-games', 'showFoundGame')->name('tickets.found');
+		Route::post('/tickets/game/{game}/seat/{seat}/book', 'book')->name('tickets.book');
+		Route::get('/tickets/game/{game}', 'showGame')->name('tickets.game');
+		Route::get('/tickets/game/{game}/seat/{seat}', 'showSeat')->name('tickets.game.seat');		
+	});
+       Route::resource('tickets', TicketController::class);
+	
 
 });
 
