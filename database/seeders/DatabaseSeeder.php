@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Team;
 use App\Models\Standing;
 use App\Models\Player;
+use App\Models\Store;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -692,6 +693,15 @@ class DatabaseSeeder extends Seeder
                 'freethrows' => '1', 
                 'fantasy' => '32.5'
             ]
+        ]);
+        Store::create([
+            'name' => 'Jersey Wilson Limited Edition',
+            'category' => 'Jerseys', 
+            'type' => 'Swingman', 
+            'description' => 'GOAT',
+            'price' => '900000', 
+            'image' => 'https://i.pinimg.com/236x/ce/2c/51/ce2c51bd637cd60af2be72b2777e8b56.jpg',
+            'store_link' => 'https://shopee.co.id/Jersey-Basket-Pria-Wanita-Premium-Keren-Lapangan-i.417432044.27735984902',
         ]);
     }
 }
