@@ -7,6 +7,7 @@ use App\Http\Controllers\GameController;
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\TagsController;
 
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\AuthController;
@@ -55,6 +56,9 @@ Route::middleware('auth')->group(function (){
 	// Untuk news page
 	Route::resource('news', ArticleController::class)->parameters(['news' => 'slug']);
 	Route::resource('comments', CommentsController::class)->parameters(['comments' => 'comments']);
+
+	// Untuk tags page
+	Route::resource('tags', TagsController::class)->except(['show']);
 
   	//Untuk store page
   	Route::resource('store', StoreController::class);

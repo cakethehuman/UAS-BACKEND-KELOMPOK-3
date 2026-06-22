@@ -7,6 +7,14 @@
             News Articles
         </h1>
     </div>
+
+    <div class="flex justify-end mb-1">
+        <a href="{{ route('tags.index') }}"
+            class="text-white text-xs font-semibold px-3 py-1 rounded-full border border-blue-500 bg-mavs-navy hover:opacity-80">
+            Tags
+        </a>
+    </div>
+
     @can("create", App\Models\Article::class)  
 	    <div class="flex items-center justify-center my-5">
 		<a class="flex text-white bg-blue-700 px-4 py-1 w-50 h-10 rounded-full font-semibold items-center justify-center" 
@@ -18,10 +26,23 @@
     @else
         <div class="flex flex-col gap-4">
             @foreach ($articles as $article)
-                <div class="border border-3 border-mavs-navy rounded-xl p-5 max-w-xl text-white">
-                    
-                    <h2 class="text-white text-lg font-bold mb-1">{{ $article->title }}</h2>
-                    
+            <div class="border border-3 border-mavs-navy rounded-xl p-5 max-w-xl text-white">
+
+                <div class="flex items-start justify-between gap-3 mb-1">    
+                        <h2 class="text-white text-lg font-bold mb-1">{{ $article->title }}</h2>
+
+                        @if($article->tags->isNotEmpty())
+                            <div class="flex flex-wrap justify-end gap-1 shrink-0">
+
+                            @foreach($article->tags as $tag)
+                                    <span class="bg-mavs-navy text-white text-xs font-semibold px-2 py-0.5 rounded-full border border-blue-500 whitespace-nowrap">
+                                        {{ $tag->name }}
+                                    </span>
+                                @endforeach
+                            </div>
+                        @endif
+                </div>
+
                     <p class="text-gray-400 text-xs mb-3">
                         Published: {{-- $article->published_at ? $article->published_at->diffForHumans() : 'No date' --}}
                     </p>
@@ -32,9 +53,7 @@
 				<span class="text-gray-600">|</span>
 				<a class="text-yellow-500 font-semibold text-sm hover:underline" href="{{ route('news.edit', $article->slug) }}">Edit</a>
 			@endcan
-
 			                        
-            {{-- Bug fix: no more JavaScrip confirm --}}
 			@can('delete', $article)
 				<span class="text-gray-600">|</span>
 				<form action="{{ route('news.destroy', $article->slug) }}" method="POST" class="inline">
