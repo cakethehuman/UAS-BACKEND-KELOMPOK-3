@@ -100,7 +100,8 @@ Route::middleware('auth')->group(function (){
 		Route::post('/tickets/found-games', 'showFoundGame')->name('tickets.found');
 		Route::post('/tickets/game/{game}/seat/{seat}/book', 'book')->name('tickets.book');
 		Route::get('/tickets/game/{game}', 'showGame')->name('tickets.game');
-		Route::get('/tickets/game/{game}/seat/{seat}', 'showSeat')->name('tickets.game.seat');		
+		Route::get('/tickets/game/{game}/seat/{seat}', 'showSeat')->name('tickets.game.seat');			
+		Route::post('/tickets/confirm-purchase', 'showConfirm')->name('tickets.confirm.purchase');
 	});
        Route::resource('tickets', TicketController::class);
 	
