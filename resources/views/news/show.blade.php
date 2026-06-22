@@ -18,6 +18,16 @@
             Published: {{ $article->published_at ? $article->published_at->diffForHumans() : 'No date' }}
         </p>
 
+        @if($article->tags->isNotEmpty())
+            <div class="flex flex-wrap gap-2 mb-4">
+                @foreach($article->tags as $tag)
+                    <span class="bg-mavs-navy text-white text-xs font-semibold px-3 py-1 rounded-full border border-blue-500">
+                        {{ $tag->name }}
+                    </span>
+                @endforeach
+            </div>
+        @endif
+
         @if($article->image)
             <div class="mb-6">
                 <img src="{{ $article->image }}" alt="Article Image" class="rounded-lg max-w-full h-auto border border-mavs-navy" style="max-height: 400px;">

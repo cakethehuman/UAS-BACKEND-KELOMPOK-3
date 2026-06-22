@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     protected $fillable = ['title', 'content', 'image', 'slug', 'published_at'];
- 
+
     protected $casts = ['published_at' => 'datetime'];
 
     //use slug for cooler URL
@@ -15,9 +15,14 @@ class Article extends Model
     {
         return 'slug';
     }
-    
+
     public function comments()
     {
         return $this->hasMany(Comments::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(tags::class, 'article_tag', 'article_id', 'tag_id');
     }
 }

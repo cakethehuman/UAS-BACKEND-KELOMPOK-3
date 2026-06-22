@@ -22,6 +22,20 @@
 
                     <h1>Content : </h1> 
                     <textarea name="content" rows="5" class="text-white bg-slate-900 border border-mavs-navy rounded p-1 w-full" required></textarea><br><br>
+
+                    @if($tags->isNotEmpty())
+                        <h1>Tags :</h1>
+                        <div class="flex flex-wrap gap-3 mt-1 mb-4">
+                            @foreach($tags as $tag)
+                                <label class="flex items-center gap-1 text-sm text-gray-300 cursor-pointer">
+                                    <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                                        class="accent-blue-500">
+                                    {{ $tag->name }}
+                                </label>
+                            @endforeach
+                        </div>
+                    @endif
+
                     <div class="flex flex-row gap-3">
                         <button type="submit" style="color: #007bff; font-weight: bold;">Publish</button>
                         <p><a href="{{ route('news.index') }}" style="color: #DC143C; font-weight: bold;">Cancel</a></p>
@@ -30,6 +44,4 @@
             </div>
         </div>
     </section>
-
-    
 @endsection

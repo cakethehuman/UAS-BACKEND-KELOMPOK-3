@@ -1,8 +1,12 @@
 @extends ('layouts.app')
 
 @section('content')
-    <div class="flex justify-between items-center border border-mavs-navy rounded-full w-3xl mx-auto my-5 px-8 py-3">
-        <h1 class="text-white text-xl font-bold"><span class="text-red-600">NBA</span> STORE</h1>
+    <div class="flex justify-center items-center">          
+        <h1 class="text-white font-bold text-3xl w-50 h-15 py-2 text-center 
+            border-2 bg-gray-800 border-mavs-navy rounded-full m-5 shadow-lg shadow-mavs-navy">
+            Store
+        </h1>
+    </div>
 	@can("create", App\Models\Store::class)
 		<a class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm transition"
 		    href="{{route('store.create') }}">

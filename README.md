@@ -41,7 +41,7 @@ Anggota kelompok <br>
 
 ## 4. Start the Development Servers
 
-Open two terminals.
+Open two terminals simultaneously.
 
 **Terminal 1**
 ```bash
