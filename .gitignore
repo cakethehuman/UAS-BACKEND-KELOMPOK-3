@@ -19,6 +19,9 @@
 /storage/*.key
 /storage/pail
 /vendor
-Homestead.json
-Homestead.yaml
-Thumbs.db
+*.swp
+*.swo
+.netrwhist
+/_ide_helper.php
+/_ide_helper_models.php
+/.phpstorm.meta.php
