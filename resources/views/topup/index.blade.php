@@ -7,5 +7,14 @@
             Top Up
         </h1>
     </div>
+    <section>
+        <h1 class="text-white">{{ $user->credits }}</h1>
+    </section>
+    <a href="{{ route('topup.edit', $user) }}">
+        Edit Credits
+    </a>
+
+    
+
 
 @endsection
