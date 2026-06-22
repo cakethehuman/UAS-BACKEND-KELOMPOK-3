@@ -21,6 +21,8 @@ use App\Http\Controllers\StatsController;
 use App\Http\Controllers\ChatWebController;
 use App\Http\Controllers\WatchController;
 
+use App\Http\Controllers\MoneyController;
+
 Route::get('/', function () {
     return view('Home');
 });
@@ -79,6 +81,8 @@ Route::middleware('auth')->group(function (){
 	Route::resource('profile', UserController::class);
 
 	Route::resource('chat', ChatWebController::class);
+	
+	Route::resource('topup', MoneyController::class);
 });
 
 
