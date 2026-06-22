@@ -24,7 +24,9 @@ Anggota kelompok <br>
 
 ```bash
 1. composer install
-2. npm install
+2. npm install dev
+3. php artisan cache:clear
+4. php artisan view:clear
 ```
 
 ## 2. Configure Environment
