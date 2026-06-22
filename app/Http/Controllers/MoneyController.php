@@ -25,16 +25,12 @@ class moneyController extends Controller
 
     public function update(Request $request)
     {
-        $request->validate([
-            'amount' => 'required|numeric|min:1'
-        ]);
+        $request->validate(['amount' => 'required|numeric|min:1']);
 
         $user = Auth::user();
 
         $user->increment('credits', $request->amount);
 
-        return redirect()
-            ->route('topup.index')
-            ->with('success', 'Credits added successfully.');
+        return redirect()->route('topup.index')->with('success', 'Credits added successfully.');
     }
 }
