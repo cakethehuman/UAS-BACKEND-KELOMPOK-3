@@ -39,7 +39,7 @@ class StandingController extends Controller
         ]);
 
         Standing::create($request->all());
-        return redirect()->route('games.index')->with('success','The standing is inserted successfully.');
+        return redirect()->route('standings.index')->with('success','The standing is inserted successfully.');
 
     }
 
