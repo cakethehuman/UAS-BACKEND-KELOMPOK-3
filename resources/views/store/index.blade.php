@@ -36,7 +36,7 @@
                         @foreach ($store as $item)
                             <div class="bg-slate-50 border border-2 border-mavs-navy rounded-xl flex flex-col overflow-hidden">
 
-                                <div class="h-48 bg-gray-800 flex justify-center items-center p-2">
+                                <div class="h-48 bg-gray-200 flex justify-center items-center p-2 overflow-hidden">
                                     <a href="{{ route('store.show', $item->id) }}">
                                         <img src="{{$item->image}}" alt="{{$item->name}}" class="max-h-full object-contain hover:scale-105 transition">
                                     </a>
