@@ -22,7 +22,12 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\ChatWebController;
 use App\Http\Controllers\WatchController;
 
+
 Route::view('/', 'Home');
+
+use App\Http\Controllers\MoneyController;
+
+
 
 // Untuk register
 Route::middleware('guest')->controller(AuthController::class)->group(function (){
@@ -79,6 +84,7 @@ Route::middleware('auth')->group(function (){
 
 	Route::resource('chat', ChatWebController::class);
 	
+<<<<<<< HEAD
 	// untuk tickets page	
 	// ini adalah versi repot
 	//Route::get('/tickets', [TicketController::class, 'index']);
@@ -100,6 +106,9 @@ Route::middleware('auth')->group(function (){
        Route::resource('tickets', TicketController::class);
 	
 
+=======
+	Route::resource('topup', MoneyController::class);
+>>>>>>> 71ad9fcf48110bf80945a5e935dfc092638d901b
 });
 
 

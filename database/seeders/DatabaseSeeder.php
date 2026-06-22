@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
              'email' 	=> 'admin@example.com',
 	     'is_admin' => true,
 	     'password' => '12345678910',
-	     'credits'  => 10000000 
+	     'credits'  => 400000.45
          ]);
 
         // insert team info
