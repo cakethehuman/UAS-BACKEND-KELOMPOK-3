@@ -8,12 +8,14 @@
         </h1>
     </div>
 	@can("create", App\Models\Store::class)
-		<a class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm transition"
-		    href="{{route('store.create') }}">
-		    + Add a product
-		</a>
+        <div class="w-full max-w-5xl mx-auto px-4 mb-4 flex justify-end">
+		    <a class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full text-sm transition"
+		        href="{{route('store.create') }}">
+		        + Add a product
+		    </a>
+        </div>
 	@endcan
-    </div>
+
 
     @if(session('success'))
         <div class="flex justify-center mb-5">
