@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use App\Models\Team;
+use App\Models\Game;
 use App\Models\Standing;
 use App\Models\Player;
 use App\Models\Store;
@@ -702,6 +703,45 @@ class DatabaseSeeder extends Seeder
             'price' => '900000', 
             'image' => 'https://i.pinimg.com/236x/ce/2c/51/ce2c51bd637cd60af2be72b2777e8b56.jpg',
             'store_link' => 'https://shopee.co.id/Jersey-Basket-Pria-Wanita-Premium-Keren-Lapangan-i.417432044.27735984902',
+        ]);
+
+        Game::insert([
+            [
+                'home_team_id' => 1,
+                'away_team_id' => 2,
+                'scheduled_date' => now()->addDay(),
+                'game_status' => 'Scheduled',
+            ],
+            [
+                'home_team_id' => 3,
+                'away_team_id' => 4,
+                'scheduled_date' => now()->addDays(2),
+                'game_status' => 'Scheduled',
+            ],
+            [
+                'home_team_id' => 1,
+                'away_team_id' => 3,
+                'scheduled_date' => now()->addDays(3),
+                'game_status' => 'Scheduled',
+            ],
+            [
+                'home_team_id' => 2,
+                'away_team_id' => 4,
+                'scheduled_date' => now()->addDays(4),
+                'game_status' => 'Scheduled',
+            ],
+            [
+                'home_team_id' => 1,
+                'away_team_id' => 4,
+                'scheduled_date' => now()->addDays(5),
+                'game_status' => 'Scheduled',
+            ],
+            [
+                'home_team_id' => 2,
+                'away_team_id' => 3,
+                'scheduled_date' => now()->addDays(6),
+                'game_status' => 'Scheduled',
+            ],
         ]);
     }
 }
