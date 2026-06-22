@@ -34,23 +34,23 @@
                 @else
                     <div class="grid grid-cols-4 gap-6">
                         @foreach ($store as $item)
-                            <div class="bg-slate-50 border border-3 border-mavs-navy rounded-xl flex flex-col overflow-hidden">
+                            <div class="bg-slate-50 border border-2 border-mavs-navy rounded-xl flex flex-col overflow-hidden">
 
-                                <div class="h-48 bg-gray-200 flex justify-center items-center p-2">
+                                <div class="h-48 bg-gray-800 flex justify-center items-center p-2">
                                     <a href="{{ route('store.show', $item->id) }}">
                                         <img src="{{$item->image}}" alt="{{$item->name}}" class="max-h-full object-contain hover:scale-105 transition">
                                     </a>
                                 </div>
 
-                                <div class="flex flex-col px-4 py-4 flex-grow">
+                                <div class="flex flex-col px-4 py-4 flex-grow bg-mavs-navy">
                                     <p class="text-gray-500 text-xs mb-1 uppercase font-semibold">{{$item->type}}</p>
-                                    <h1 class="text-slate-900 text-md font-bold mb-2 leading-tight">{{$item->name}}</h1>
+                                    <h1 class="text-white text-md font-bold mb-2 leading-tight">{{$item->name}}</h1>
                                     <p class="text-red-700 text-lg font-extrabold mt-auto">Rp
                                         {{number_format($item->price, 0, ',', '.')}}
                                     </p>
                                 </div>
 
-                                <div class="flex items-center gap-2 px-4 py-3 bg-gray-100 border-t border-gray-300 justify-center">
+                                <div class="flex items-center gap-2 px-4 py-3 bg-mavs-navy border-t border-gray-300 justify-center">
                                     
                                     <a class="bg-blue-500 rounded-full w-7 h-5 text-white text-xs flex items-center justify-center hover:bg-blue-600"
                                         href="{{ route('store.show', $item->id) }}" title="View Product Detail">
