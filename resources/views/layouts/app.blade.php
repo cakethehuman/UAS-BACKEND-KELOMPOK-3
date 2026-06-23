@@ -16,67 +16,72 @@
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 @auth
-                                    <a href="{{ url('/') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                    <a href="{{ url('/') }}" aria-current="page" class="px-2 py-1 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Home</a>
-                                    <a href="{{ url('/teams') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                    <a href="{{ url('/teams') }}" aria-current="page" class="px-2 py-1 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Teams</a>
-                                    <a href="{{ url('/players') }}" aria-current="page" class="px-3 py-2 text-sm
+                                    <a href="{{ url('/players') }}" aria-current="page" class="px-2 py-1 text-sm
                                         font-medium text-gray-300 hover:bg-mavs-navy/70
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Players</a>
-                                    <a href="{{ url('/stats') }}" aria-current="page" class="px-3 py-2 text-sm
+                                    <a href="{{ url('/stats') }}" aria-current="page" class="px-2 py-1 text-sm
                                         font-medium text-gray-300 hover:bg-mavs-navy/70
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Stats</a>
-                                    <a href="{{ url('/games') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                    <a href="{{ url('/games') }}" aria-current="page" class="px-2 py-1 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                          rounded-full transition duration-300">Games</a>
-                                    <a href="{{ url('/news') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                    <a href="{{ url('/news') }}" aria-current="page" class="px-2 py-1 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">News</a>
-                                    <a href="{{ url('/profile') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                    <a href="{{ url('/profile') }}" aria-current="page" class="px-2 py-1 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Profile</a>
-                                    <a href="{{ url('/standings') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                    <a href="{{ url('/standings') }}" aria-current="page" class="px-2 py-1 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Standing</a>
 
+
 				    
-				@endauth
+				
 
                                     
-                                
-
+                             
+                                    <a href="{{ url('/topup') }}" aria-current="page" class="px-2 py-1 text-sm 
+                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
+                                        hover:text-white border-2 border-mavs-navy
+                                        rounded-full transition duration-300">Top Up</a>
+                                @endauth
                                 <!-- Konten yang diwrap oleh directive guest hanya ditampilkan oleh user yang belum login atau belum terautentikasi -->
                                 @guest
-                                    <a href="{{ route('show.login') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                    <a href="{{ route('show.login') }}" aria-current="page" class="px-2 py-1 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Login</a>
-                                    <a href="{{ route('show.register') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                    <a href="{{ route('show.register') }}" aria-current="page" class="px-2 py-1 text-sm 
                                         font-medium text-gray-300 hover:bg-mavs-navy/70 
                                         hover:text-white border-2 border-mavs-navy
                                         rounded-full transition duration-300">Register</a>
                                 @endguest
                                 <!-- auth directive digunakan untuk memastikan bahwa konten yang terbungkus dengan directive itu baru akan muncul jika user telah login -->
                                 @auth
-					    <a href="{{ url('/watch') }}" aria-current="page" class="px-3 py-2 text-sm 
+					    <a href="{{ url('/watch') }}" aria-current="page" class="px-2 py-1 text-sm 
                                           	font-medium text-gray-300 hover:bg-mavs-navy/70 
                                           	hover:text-white border-2 border-mavs-navy
                                           	rounded-full transition duration-300">Watch</a>		
-                                            <a href="{{ url('/store') }}" aria-current="page" class="px-3 py-2 text-sm 
+                                            <a href="{{ url('/store') }}" aria-current="page" class="px-2 py-1 text-sm 
                                                 font-medium text-gray-300 hover:bg-mavs-navy/70 
                                                 hover:text-white border-2 border-mavs-navy
                                                 rounded-full transition duration-300">Store</a>
-					    <a href="{{ url('/tickets') }}" aria-current="page" class="px-3 py-2 text-sm 
+					    <a href="{{ url('/tickets') }}" aria-current="page" class="px-2 py-1 text-sm 
 	                                        font-medium text-gray-300 hover:bg-mavs-navy/70 
 	                                        hover:text-white border-2 border-mavs-navy
 	                                        rounded-full transition duration-300">Tickets</a>	
@@ -86,7 +91,7 @@
                                             </span>
                                             <form action="{{ route('logout') }}" method="POST" class="m-0">
                                                 @csrf
-                                                <button class="px-3 py-2 text-sm 
+                                                <button class="px-2 py-1 text-sm 
                                     font-medium text-gray-300 hover:bg-red-600/70 
                                     hover:text-white border-2 border-mavs-navy
                                     rounded-full transition duration-300">Logout</button>

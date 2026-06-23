@@ -27,12 +27,7 @@
                             <div class="flex flex-row justify-center items-center gap-2 py-2">
                                 <a class="bg-blue-700 
                                 rounded-full w-7 h-5 text-white text-xs flex items-center 
-                                justify-center" href="{{ route('standings.show',  $standing) }}">🔍</a>
-				@can("update", $standing)
-					<a class="bg-yellow-500 
-					rounded-full w-7 h-5 text-white text-xs flex items-center 
-					justify-center" href="{{ route('standings.edit',  $standing) }}">📝</a>
-			        @endcan	
+                                justify-center" href="{{ route('teams.show', $standing->team->id) }}">🔍</a>
 				@can("delete", $standing)	
 					<form action="{{ route('standings.destroy',  $standing) }}" method="POST">
 					    @csrf

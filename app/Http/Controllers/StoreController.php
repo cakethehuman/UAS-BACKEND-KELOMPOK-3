@@ -38,8 +38,9 @@ class StoreController extends Controller
             'category' => 'required|string', 
             'type' => 'nullable|string', 
             'description' => 'nullable|string',
-            'price' => 'required|integer', 
+            'price' => 'required|integer|min:0', 
             'image' => 'required|string',  
+            'store_link' => 'required|url',
         ]);
 
         Store::create($request->all());
@@ -74,8 +75,9 @@ class StoreController extends Controller
             'category' => 'required|string', 
             'type' => 'nullable|string', 
             'description' => 'nullable|string',
-            'price' => 'required|integer', 
+            'price' => 'required|integer|min:0', 
             'image' => 'required|string',  
+            'store_link' => 'required|url',
         ]);
 
         $store->update($request->all());
