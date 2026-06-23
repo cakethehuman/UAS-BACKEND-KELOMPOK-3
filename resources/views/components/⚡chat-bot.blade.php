@@ -41,7 +41,7 @@ new class extends Component
 
         $response = match ($option) {
             '1'     => 'Go to the game page on the navigation bar then click on it',
-            '2'     => 'Not Done waiting till tickers',
+            '2'     => 'Go to the ticket page on the navigation bar, click it, search for the game you want by filtering via month and team, select the game that popped up, select the seat you want, click buy, and confirm your purchase',
             '3'     => 'Go to Store then you can buy Items there',
             '4'     => 'Kelompok 3',
             default => 'Error!',
