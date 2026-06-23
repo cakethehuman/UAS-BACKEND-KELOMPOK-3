@@ -15,4 +15,15 @@ class Seat extends Model
     {
     	return $this->hasOne(Ticket::class);
     }
+    protected static function booted()
+    {
+        static::created(function (Seat $seat) { 
+         Ticket::create([
+		    'user_id' => null,
+		    'seat_id' => $seat->id 
+	    ]);
+	    
+	     
+    });
+    }
 }

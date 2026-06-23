@@ -40,12 +40,7 @@ class Game extends Model
                         ]);
                 }
             }
-	    foreach ($seats as $seat){
-		    Ticket::create([
-			    'user_id' => null,
-			    'seat_id' => $seat->id 
-		    ]);
-	    }
+	    
 	     
     });
     }
