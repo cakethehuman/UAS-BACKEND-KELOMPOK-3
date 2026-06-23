@@ -22,39 +22,31 @@
                             <h1> Price             : {{ $seat -> seat_price }}</h1>
                             <h1> Seat Number       : {{ $seat -> seat_number }}</h1>
                             <h1> Seat Availability : {{ $seat -> seat_availability }}</h1>
+			    <h1>Your current credit: {{ $user -> credits }}</h1>
+			    <h1>Are you sure about this seat?</h1> 
+			    <h1>Click the green button to confirm this purchase</h1>
                         </div>
 
                     </div>
                 </div>
                 <div class="flex flex-row items-center justify-center mx-5">	
-		   
-		   <a class="bg-green-400 rounded-full w-48 h-5 
-				  text-white text-xs mx-2
-				  flex items-center justify-center"	
-			   href="{{ route('tickets.confirm.purchase', [$game, $seat]) }}"
-				  >
-			🎫
-		   </a>	
-	           @if ($seat->seat_availability !== "Available") 
-	           <form method="POST" action="{{ route('tickets.admin.cancel', [$game, $seat]) }}">
-			@csrf
-			<button class="bg-white rounded-full w-48 h-5 
-				  text-white text-xs mx-2
-				  flex items-center justify-center"	
-			        type="submit"  
-				  >
-		         ❌	
-		   	</button>
-		   </form>
-	           
-	           @endif
-		   
+
+		   <form method="POST" action="{{ route('tickets.book', [$game, $seat]) }}">
+			@csrf 
+		        <button class="bg-green-400 rounded-full w-48 h-5 
+		             	  text-white text-xs mx-2
+		             	  flex items-center justify-center" 
+		                type="submit" 
+		             	  >
+		             🎫
+		        </button>
+		   </form>	
+		   	
 		   
 		   <a class="bg-white rounded-full w-48 h-5 text-white text-xs mx-2
-				flex items-center justify-center" href="{{ route('tickets.game', $game) }}">⬅️</a>
+				flex items-center justify-center" href="{{ route('tickets.game.seat', [$game, $seat]) }}">⬅️</a>
 
                 </div>
-		
 		
             </div>
         </div>

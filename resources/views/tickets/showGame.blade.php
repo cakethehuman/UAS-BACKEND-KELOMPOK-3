@@ -7,10 +7,10 @@
             Game Info
         </h1>
     </div>
-    @if ($errors->has('ticket_already_booked'))
+    @if ($errors->has('error'))
 	<div class="flex justify-center my-3">
 		<div class="flex justify-center text-center items-center bg-white text-red-700 rounded-3xl w-64 h-10">
-    			{{ $errors->first('ticket_already_booked') }}	
+    			{{ $errors->first('error') }}	
     		</div>	
 	</div>
     		 
@@ -41,16 +41,24 @@
         <div class="flex items-center justify-center">
             <div class="flex border border-3 border-mavs-navy 
             items-center justify-center w-lg h-auto rounded-lg">
-                <div class="grid grid-cols-10 gap-2 my-5">
+                <div class="grid grid-cols-10 gap-2 my-5"> 
                     @foreach($game->seats as $seat)
-			@if ($seat->seat_availability !== "Available")
-		          <div class="flex border border-3 border-red-800 items-center justify-center w-10 h-10">
-                            {{ $seat->seat_number }}
-                          </div>			
-			@else
-		           <div class="flex border border-3 border-mavs-navy items-center justify-center w-10 h-10 hover:border-blue-700">
-                            <a href="{{ route('tickets.game.seat', [$game,$seat]) }}">{{ $seat->seat_number }}</a>
+			@if ($hasSeat && !(auth()->user()->is_admin))
+		           <div class="flex border border-3 border-mavs-navy items-center justify-center w-10 h-10">
+                            <span>{{ $seat->seat_number }}</span>
                            </div>	
+		        @elseif ($seat->seat_availability !== "Available" && (auth()->user()->is_admin)) 
+			     <div class="flex border border-3 border-red-500 items-center justify-center w-10 h-10 hover:red-900">
+                              <a href="{{ route('tickets.game.seat', [$game, $seat]) }}">{{ $seat->seat_number }}</a>
+                             </div>  
+		        @elseif ($seat->seat_availability !== "Available")
+		          <div class="flex border border-3 border-red-500 items-center justify-center w-10 h-10">
+                            {{ $seat->seat_number }}
+                          </div>			    
+			@else
+			   <div class="flex border border-3 border-mavs-navy items-center justify-center w-10 h-10 hover:border-blue-700">
+                            <a href="{{ route('tickets.game.seat', [$game, $seat]) }}">{{ $seat->seat_number }}</a>
+                           </div>
 			@endif
                         
                     @endforeach

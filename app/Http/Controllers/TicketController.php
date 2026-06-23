@@ -1,16 +1,17 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Game;
 use App\Models\Seat;
 use App\Models\Team;
 use App\Models\Ticket;
+use App\Models\User;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 
 class TicketController extends Controller
 {
@@ -37,94 +38,55 @@ class TicketController extends Controller
      *  dari query yang ada
      *  jika terjadi error, database dapat dirollback
      */
-    public function book(Game $game, Seat $seat) {
-	
-	$current_user = Auth::user();	
-
-	
-		
-	DB::transaction(function() use ($seat, $game, $current_user) {
-	        try {
+    public function book(Game $game, Seat $seat) {	
+	try {
+		DB::transaction(function() use ($seat, $game) {
+			$current_user = User::where('id', Auth::id())
+				      ->lockForUpdate()
+				      ->first();
 			foreach ($game->seats as $current_seat) {
 				if ($current_seat->ticket->user_id === $current_user->id)
 					throw new Exception('You already booked a ticket on this game!');
 			}
-	       		$seat = Seat::where('id', $seat->id)->lockForUpdate()->first();
+			if ($current_user->credits < $seat->seat_price)
+				throw new Exception("You don't have sufficient credit!");
+			$seat = Seat::where('id', $seat->id)->lockForUpdate()->first();
 			$ticket = $seat->ticket;
-			if (!($ticket->is_booked) && $seat->seat_availability === 'Available'){
+			if (!($ticket->is_booked) && $seat->seat_availability === 'Available' && $current_user->credits >= $seat->seat_price){		
 				$seat->update(['seat_availability' => 'Not Available']);
 				$ticket->update([
 					'is_booked' => true,
 					'user_id'   => $current_user->id
 				]);
+				$current_user->decrement('credits', $seat->seat_price);
 			}
 			
 			else {
 				throw new Exception('Ticket already booked!');
-			} 	
-		}		
+			}	
+		});	
 
-		catch (Exception $e) {
-			return back()
-			       ->withErrors(['ticket_already_booked' => $e->getMessage()])	
-		       	       ->withInput();
-		}	
-	});	
+	 	return redirect()->route('tickets.game', $game)->with('success', 'Ticket has been booked');
+	    }		
 
-	return redirect()->route('tickets.game', $game)->with('success', 'Ticket has been booked');
+	catch (Exception $e) {
+		return back()
+		       ->withErrors(['error' => $e->getMessage()])	
+		       ->withInput();
+	}	
+		
+	
+	
 	
     }
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view('tickets.create');
+    public function showConfirm(Game $game, Seat $seat) {	
+	$current_user = Auth::user();
+	return view('tickets.showConfirm', ['game' => $game, 'seat' => $seat, 'user' => $current_user]); 
     }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-	   // Ticket::create([
-	   // 	
-	   // ]); 
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Ticket $ticket)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Ticket $ticket)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Ticket $ticket)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Ticket $ticket)
-    {
-        //
-    }
-
-    public function showFoundGame(Request $request){
+        public function showFoundGame(Request $request){
 	    $selectedTeam = $request->input('team');
     	    $selectedMonth = $request->input('month');	    
 
@@ -188,11 +150,68 @@ class TicketController extends Controller
     } 
 
     public function showGame(Game $game) {
-    	return view("tickets.showGame", ['game' => $game]);	
+	$current_user = Auth::user();
+	$userHasSeat = false;
+	
+
+	if ($userHasSeat) {
+		$userHasSeat =	$game->seats()
+		     ->whereHas('ticket', function ($query) use ($current_user){
+		     	$query->where('user_id', $current_user->id);
+		     })->exists();
+	}
+		
+	 
+    	return view("tickets.showGame", ['game' => $game, 'hasSeat' => $userHasSeat]);	
     }
 
-    public function showSeat(Game $game, Seat $seat) {
+    public function showSeat(Game $game, Seat $seat) {	
     	return view('tickets.showSeat', ['game' => $game, 'seat' => $seat]);
+    }
+
+    public function cancel(Game $game, Seat $seat) {
+   	$current_user = Auth::user();
+	$ticket = $seat->ticket;
+	if ($current_user->is_admin){
+		try {
+			DB::transaction(function() use ($seat, $ticket, $game) {
+				$ticket = Ticket::where('id', $ticket->id)
+					  ->lockForUpdate()
+				  	  ->first();
+				$current_user = User::where('id', $ticket->user_id)
+					      ->lockForUpdate()
+					      ->first();
+				
+			
+				$seat = Seat::where('id', $seat->id)->lockForUpdate()->first();	
+				if ($ticket->is_booked && $seat->seat_availability !== 'Available'){		
+					$seat->update(['seat_availability' => 'Available']);
+					$ticket->update([
+						'is_booked' => false,
+						'user_id'   => null 
+					]);
+					$current_user->increment('credits', $seat->seat_price);
+				}
+				
+				else {
+					throw new Exception('Ticket is not booked');
+				}	
+				
+			});	
+	
+		    }		
+
+		catch (Exception $e) {
+			return back()
+			       ->withErrors(['error' => $e->getMessage()])	
+			       ->withInput();
+		}	
+	
+	return redirect()->route('tickets.game', $game)->with('success', 'Ticket has been cancelled');	
+	}	
+	else {
+		return view('tickets.showSeat', ['game' => $game, 'seat' => $seat]);
+	}
     }
 
 }
