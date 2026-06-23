@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('content')	
     <div class="flex justify-center items-center">          
         <h1 class="text-white font-bold text-3xl w-65 h-15 py-2 text-center 
             border-2 bg-gray-800 border-mavs-navy rounded-full m-5 shadow-lg shadow-mavs-navy">
@@ -9,7 +9,7 @@
     </div>
 
     <div class = "flex justify-center">
-        <div class="border border-3 border-mavs-navy rounded-lg w-3xl h-2xl">
+        <div class="border border-3 border-mavs-navy rounded-lg w-3xl min-h-fit">
             <div class="flex flex-col items-center justify-center">
                 <div class="flex text-white border border-3 border-mavs-navy justify-center w-150 mx-3 my-5">
                     <div class = "flex flex-row gap-5">
@@ -26,26 +26,38 @@
 
                     </div>
                 </div>
-                <div class="flex flex-row items-center justify-center mx-5">
-		   @can("delete", $seat) 		
-                    <form action="{{ route('seats.destroy', $seat) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button class='bg-red-700 rounded-full w-48 h-5 text-white text-xs mx-2
-                        flex items-center justify-center' type="submit">X</button>
-                    </form> 
-		   @endcan	
-		   @can("update", $seat) 	
-			    <a class="bg-yellow-400 rounded-full w-48 h-5 text-white text-xs mx-2
-				flex items-center justify-center" href="{{ route('seats.edit', $seat) }}">📝</a>
-		   @endcan
+                <div class="flex flex-row items-center justify-center mx-5">	
+		   
+		   <a class="bg-green-400 rounded-full w-48 h-5 
+				  text-white text-xs mx-2
+				  flex items-center justify-center"	
+			   href="{{ route('tickets.confirm.purchase', [$game, $seat]) }}"
+				  >
+			🎫
+		   </a>	
+	           @if ($seat->seat_availability !== "Available") 
+	           <form method="POST" action="{{ route('tickets.admin.cancel', [$game, $seat]) }}">
+			@csrf
+			<button class="bg-white rounded-full w-48 h-5 
+				  text-white text-xs mx-2
+				  flex items-center justify-center"	
+			        type="submit"  
+				  >
+		         ❌	
+		   	</button>
+		   </form>
+	           
+	           @endif
+		   
+		   
 		   <a class="bg-white rounded-full w-48 h-5 text-white text-xs mx-2
-				flex items-center justify-center" href="{{ route('games.show', $game) }}">⬅️</a>
+				flex items-center justify-center" href="{{ route('tickets.game', $game) }}">⬅️</a>
 
                 </div>
+		
+		
             </div>
         </div>
     </div>
-
-
 @endsection
+

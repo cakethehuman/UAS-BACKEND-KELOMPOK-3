@@ -11,4 +11,19 @@ class Seat extends Model
     public function gameInfo(){
         return $this->belongsTo(Game::class, 'game_id');
     }
+    public function ticket()
+    {
+    	return $this->hasOne(Ticket::class);
+    }
+    protected static function booted()
+    {
+        static::created(function (Seat $seat) { 
+         Ticket::create([
+		    'user_id' => null,
+		    'seat_id' => $seat->id 
+	    ]);
+	    
+	     
+    });
+    }
 }
